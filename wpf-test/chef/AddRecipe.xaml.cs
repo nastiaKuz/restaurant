@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using wpf_test.Entity;
 
 namespace wpf_test.chef
 {
@@ -19,7 +20,7 @@ namespace wpf_test.chef
     /// </summary>
     public partial class AddRecipe : Window
     {
-        Project_Restaurant1Entities _db = new Project_Restaurant1Entities();
+        ProjectRestaurantEntities _db = new ProjectRestaurantEntities();
         private int ingredientId, unitId;
         public AddRecipe()
         {

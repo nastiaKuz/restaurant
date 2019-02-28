@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.chef"
         mc:Ignorable="d"
-        Title="ChefWindow" Height="450" Width="500">
+        Title="ChefWindow" Height="450" Width="720">
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="DataGridCell">
+                <Style.Triggers>
+                    <Trigger Property="DataGridCell.IsEditing" Value="True">
+                        <Setter Property="Background" Value="#FF0000" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
         <TabControl x:Name="ChefMenu">
             <TabItem x:Name="currentChecksTab">
                 <TabItem.Header>
@@ -32,11 +41,20 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Button x:Name="updateBtn" Content="Змінити статус" Click="updateStatusBtn_Click"/>
+                                                <Button x:Name="cookBtn" Content="Розпочати виконання" Click="cookBtn_Click"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
+                                <!--<DataGridComboBoxColumn x:Name="Status" Header="Статус"
+                                                        SelectedValueBinding="{Binding statuses, Mode=TwoWay}"  
+                                                        DisplayMemberPath="{Binding status}" />-->
+                                <!--<DataGridComboBoxColumn x:Name="colStatus" Header="Статус"
+                                                        SelectedValueBinding="{Binding id}"
+                                                        DisplayMemberPath="name" 
+                                                        SelectedValuePath="id"
+                                />-->
+
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>

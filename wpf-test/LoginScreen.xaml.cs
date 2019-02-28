@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using wpf_test.chef;
+using wpf_test.Entity;
 
 namespace wpf_test
 {
@@ -20,7 +21,7 @@ namespace wpf_test
     /// </summary>
     public partial class LoginScreen : Window
     {
-        Project_Restaurant1Entities _db = new Project_Restaurant1Entities();
+        ProjectRestaurantEntities _db = new ProjectRestaurantEntities();
         public LoginScreen()
         {
             InitializeComponent();

@@ -92,7 +92,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="time" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="status_id" Type="Int32" />
     <Property Name="table_id" Type="Int32" />
     <Property Name="waiter_id" Type="Int32" />
@@ -669,6 +669,7 @@
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
     <FunctionImport Name="usp_GetErrorInfo" ReturnType="Collection(Project_Restaurant1Model.usp_GetErrorInfo_Result)" />
+    <FunctionImport Name="getActiveOrders" EntitySet="checks" ReturnType="Collection(Project_Restaurant1Model.checks)" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -688,5 +689,43 @@
     <Property Type="Int32" Name="ErrorLine" Nullable="true" />
     <Property Type="String" Name="ErrorProcedure" Nullable="true" MaxLength="128" />
     <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+  </ComplexType>
+  <ComplexType Name="getActiveOrders_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="order_id" Nullable="false" />
+    <Property Type="Int32" Name="menu_id" Nullable="false" />
+    <Property Type="Int32" Name="count" Nullable="false" />
+    <Property Type="Int32" Name="id1" Nullable="true" />
+    <Property Type="DateTime" Name="time" Nullable="true" />
+    <Property Type="Int32" Name="status_id" Nullable="true" />
+    <Property Type="Int32" Name="table_id" Nullable="true" />
+    <Property Type="Int32" Name="waiter_id" Nullable="true" />
+    <Property Type="Int32" Name="id2" Nullable="true" />
+    <Property Type="Int32" Name="unit_of_measurement_id" Nullable="true" />
+    <Property Type="Int32" Name="type_dish_id" Nullable="true" />
+    <Property Type="String" Name="dish_name" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="size" Nullable="true" />
+    <Property Type="Single" Name="price" Nullable="true" />
+    <Property Type="Int32" Name="id3" Nullable="true" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="getActiveOrders_Result1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="order_id" Nullable="false" />
+    <Property Type="Int32" Name="menu_id" Nullable="false" />
+    <Property Type="Int32" Name="count" Nullable="false" />
+    <Property Type="Int32" Name="id1" Nullable="true" />
+    <Property Type="DateTime" Name="time" Nullable="true" />
+    <Property Type="Int32" Name="status_id" Nullable="true" />
+    <Property Type="Int32" Name="table_id" Nullable="true" />
+    <Property Type="Int32" Name="waiter_id" Nullable="true" />
+    <Property Type="Int32" Name="id2" Nullable="true" />
+    <Property Type="Int32" Name="unit_of_measurement_id" Nullable="true" />
+    <Property Type="Int32" Name="type_dish_id" Nullable="true" />
+    <Property Type="String" Name="dish_name" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="size" Nullable="true" />
+    <Property Type="Single" Name="price" Nullable="true" />
+    <Property Type="Int32" Name="id3" Nullable="true" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="20" />
   </ComplexType>
 </Schema>

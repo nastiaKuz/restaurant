@@ -1,0 +1,554 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectRestaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="checks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="menu_id" Type="Int32" Nullable="false" />
+    <Property Name="count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cooking" Relationship="Self.FK__cooking__check_i__48CFD27E" FromRole="checks" ToRole="cooking" />
+    <NavigationProperty Name="menu" Relationship="Self.FK_menu" FromRole="checks" ToRole="menu" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_orders" FromRole="checks" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="content_order_ingredients">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="count" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="order_ingredients_id" Type="Int32" Nullable="false" />
+    <Property Name="ingredient_id" Type="Int32" Nullable="false" />
+    <Property Name="unit_of_measurement_id" Type="Int32" />
+    <NavigationProperty Name="units_of_measurement" Relationship="Self.FK__content_o__unit___440B1D61" FromRole="content_order_ingredients" ToRole="units_of_measurement" />
+    <NavigationProperty Name="shipment" Relationship="Self.FK_contents" FromRole="content_order_ingredients" ToRole="shipment" />
+    <NavigationProperty Name="ingredients" Relationship="Self.FK_ingredients" FromRole="content_order_ingredients" ToRole="ingredients" />
+    <NavigationProperty Name="order_ingredients" Relationship="Self.FK_order_ingredients" FromRole="content_order_ingredients" ToRole="order_ingredients" />
+  </EntityType>
+  <EntityType Name="cooking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="receive_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="execute_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="check_id" Type="Int32" />
+    <Property Name="status_id" Type="Int32" />
+    <NavigationProperty Name="checks" Relationship="Self.FK__cooking__check_i__48CFD27E" FromRole="cooking" ToRole="checks" />
+    <NavigationProperty Name="statuses" Relationship="Self.FK__cooking__status___49C3F6B7" FromRole="cooking" ToRole="statuses" />
+  </EntityType>
+  <EntityType Name="ingredients">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="content_order_ingredients" Relationship="Self.FK_ingredients" FromRole="ingredients" ToRole="content_order_ingredients" />
+    <NavigationProperty Name="storage_ingredient" Relationship="Self.FK__storage_i__ingre__3D5E1FD2" FromRole="ingredients" ToRole="storage_ingredient" />
+    <NavigationProperty Name="recipes" Relationship="Self.FK_ingredient" FromRole="ingredients" ToRole="recipes" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="unit_of_measurement_id" Type="Int32" Nullable="false" />
+    <Property Name="type_dish_id" Type="Int32" />
+    <Property Name="dish_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="size" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="checks" Relationship="Self.FK_menu" FromRole="menu" ToRole="checks" />
+    <NavigationProperty Name="type_dish" Relationship="Self.FK__menu__type_dish___1B0907CE" FromRole="menu" ToRole="type_dish" />
+    <NavigationProperty Name="recipes" Relationship="Self.FK_menus" FromRole="menu" ToRole="recipes" />
+  </EntityType>
+  <EntityType Name="order_ingredients">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="execute_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="provider_id" Type="Int32" />
+    <Property Name="status_id" Type="Int32" />
+    <NavigationProperty Name="content_order_ingredients" Relationship="Self.FK_order_ingredients" FromRole="order_ingredients" ToRole="content_order_ingredients" />
+    <NavigationProperty Name="providers" Relationship="Self.FK__order_ing__provi__239E4DCF" FromRole="order_ingredients" ToRole="providers" />
+    <NavigationProperty Name="statuses" Relationship="Self.FK__order_ing__statu__24927208" FromRole="order_ingredients" ToRole="statuses" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="time" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="status_id" Type="Int32" />
+    <Property Name="table_id" Type="Int32" />
+    <Property Name="waiter_id" Type="Int32" />
+    <NavigationProperty Name="checks" Relationship="Self.FK_orders" FromRole="orders" ToRole="checks" />
+    <NavigationProperty Name="statuses" Relationship="Self.FK__orders__status_i__108B795B" FromRole="orders" ToRole="statuses" />
+    <NavigationProperty Name="platens" Relationship="Self.FK__orders__table_id__117F9D94" FromRole="orders" ToRole="platens" />
+    <NavigationProperty Name="waiters" Relationship="Self.FK__orders__waiter_i__1273C1CD" FromRole="orders" ToRole="waiters" />
+  </EntityType>
+  <EntityType Name="platens">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="number" Type="Int32" Nullable="false" />
+    <Property Name="people_amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__table_id__117F9D94" FromRole="platens" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="providers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="order_ingredients" Relationship="Self.FK__order_ing__provi__239E4DCF" FromRole="providers" ToRole="order_ingredients" />
+  </EntityType>
+  <EntityType Name="recipes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="menu_id" Type="Int32" Nullable="false" />
+    <Property Name="ingredient_id" Type="Int32" Nullable="false" />
+    <Property Name="count" Type="Int32" Nullable="false" />
+    <Property Name="unit_of_measurement_id" Type="Int32" />
+    <NavigationProperty Name="ingredients" Relationship="Self.FK_ingredient" FromRole="recipes" ToRole="ingredients" />
+    <NavigationProperty Name="menu" Relationship="Self.FK_menus" FromRole="recipes" ToRole="menu" />
+    <NavigationProperty Name="units_of_measurement" Relationship="Self.FK__recipes__unit_of__34C8D9D1" FromRole="recipes" ToRole="units_of_measurement" />
+  </EntityType>
+  <EntityType Name="shipment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_content" Type="Int32" Nullable="false" />
+    <Property Name="id_storage_ingredient" Type="Int32" Nullable="false" />
+    <Property Name="time" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="content_order_ingredients" Relationship="Self.FK_contents" FromRole="shipment" ToRole="content_order_ingredients" />
+    <NavigationProperty Name="storage_ingredient" Relationship="Self.FK_storage_ingredients" FromRole="shipment" ToRole="storage_ingredient" />
+  </EntityType>
+  <EntityType Name="statuses">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="cooking" Relationship="Self.FK__cooking__status___49C3F6B7" FromRole="statuses" ToRole="cooking" />
+    <NavigationProperty Name="order_ingredients" Relationship="Self.FK__order_ing__statu__24927208" FromRole="statuses" ToRole="order_ingredients" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__status_i__108B795B" FromRole="statuses" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="storage_ingredient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="count" Type="Int32" Nullable="false" />
+    <Property Name="unit_of_measurement_id" Type="Int32" />
+    <Property Name="ingredient_id" Type="Int32" />
+    <NavigationProperty Name="ingredients" Relationship="Self.FK__storage_i__ingre__3D5E1FD2" FromRole="storage_ingredient" ToRole="ingredients" />
+    <NavigationProperty Name="shipment" Relationship="Self.FK_storage_ingredients" FromRole="storage_ingredient" ToRole="shipment" />
+    <NavigationProperty Name="units_of_measurement" Relationship="Self.FK__storage_i__unit___3C69FB99" FromRole="storage_ingredient" ToRole="units_of_measurement" />
+  </EntityType>
+  <EntityType Name="type_dish">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="menu" Relationship="Self.FK__menu__type_dish___1B0907CE" FromRole="type_dish" ToRole="menu" />
+  </EntityType>
+  <EntityType Name="units_of_measurement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="content_order_ingredients" Relationship="Self.FK__content_o__unit___440B1D61" FromRole="units_of_measurement" ToRole="content_order_ingredients" />
+    <NavigationProperty Name="recipes" Relationship="Self.FK__recipes__unit_of__34C8D9D1" FromRole="units_of_measurement" ToRole="recipes" />
+    <NavigationProperty Name="storage_ingredient" Relationship="Self.FK__storage_i__unit___3C69FB99" FromRole="units_of_measurement" ToRole="storage_ingredient" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="waiters">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__waiter_i__1273C1CD" FromRole="waiters" ToRole="orders" />
+  </EntityType>
+  <Association Name="FK__cooking__check_i__48CFD27E">
+    <End Role="checks" Type="Self.checks" Multiplicity="0..1" />
+    <End Role="cooking" Type="Self.cooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="checks">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cooking">
+        <PropertyRef Name="check_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_menu">
+    <End Role="menu" Type="Self.menu" Multiplicity="1" />
+    <End Role="checks" Type="Self.checks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menu">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="checks">
+        <PropertyRef Name="menu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders">
+    <End Role="orders" Type="Self.orders" Multiplicity="1" />
+    <End Role="checks" Type="Self.checks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="checks">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__content_o__unit___440B1D61">
+    <End Role="units_of_measurement" Type="Self.units_of_measurement" Multiplicity="0..1" />
+    <End Role="content_order_ingredients" Type="Self.content_order_ingredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="units_of_measurement">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="content_order_ingredients">
+        <PropertyRef Name="unit_of_measurement_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contents">
+    <End Role="content_order_ingredients" Type="Self.content_order_ingredients" Multiplicity="1" />
+    <End Role="shipment" Type="Self.shipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="content_order_ingredients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="shipment">
+        <PropertyRef Name="id_content" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ingredients">
+    <End Role="ingredients" Type="Self.ingredients" Multiplicity="1" />
+    <End Role="content_order_ingredients" Type="Self.content_order_ingredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ingredients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="content_order_ingredients">
+        <PropertyRef Name="ingredient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_ingredients">
+    <End Role="order_ingredients" Type="Self.order_ingredients" Multiplicity="1" />
+    <End Role="content_order_ingredients" Type="Self.content_order_ingredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_ingredients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="content_order_ingredients">
+        <PropertyRef Name="order_ingredients_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cooking__status___49C3F6B7">
+    <End Role="statuses" Type="Self.statuses" Multiplicity="0..1" />
+    <End Role="cooking" Type="Self.cooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cooking">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__storage_i__ingre__3D5E1FD2">
+    <End Role="ingredients" Type="Self.ingredients" Multiplicity="0..1" />
+    <End Role="storage_ingredient" Type="Self.storage_ingredient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ingredients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="storage_ingredient">
+        <PropertyRef Name="ingredient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ingredient">
+    <End Role="ingredients" Type="Self.ingredients" Multiplicity="1" />
+    <End Role="recipes" Type="Self.recipes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ingredients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="recipes">
+        <PropertyRef Name="ingredient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__menu__type_dish___1B0907CE">
+    <End Role="type_dish" Type="Self.type_dish" Multiplicity="0..1" />
+    <End Role="menu" Type="Self.menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_dish">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="menu">
+        <PropertyRef Name="type_dish_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_menus">
+    <End Role="menu" Type="Self.menu" Multiplicity="1" />
+    <End Role="recipes" Type="Self.recipes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menu">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="recipes">
+        <PropertyRef Name="menu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_ing__provi__239E4DCF">
+    <End Role="providers" Type="Self.providers" Multiplicity="0..1" />
+    <End Role="order_ingredients" Type="Self.order_ingredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="providers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_ingredients">
+        <PropertyRef Name="provider_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_ing__statu__24927208">
+    <End Role="statuses" Type="Self.statuses" Multiplicity="0..1" />
+    <End Role="order_ingredients" Type="Self.order_ingredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_ingredients">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__status_i__108B795B">
+    <End Role="statuses" Type="Self.statuses" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__table_id__117F9D94">
+    <End Role="platens" Type="Self.platens" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="platens">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="table_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__waiter_i__1273C1CD">
+    <End Role="waiters" Type="Self.waiters" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="waiters">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="waiter_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__recipes__unit_of__34C8D9D1">
+    <End Role="units_of_measurement" Type="Self.units_of_measurement" Multiplicity="0..1" />
+    <End Role="recipes" Type="Self.recipes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="units_of_measurement">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="recipes">
+        <PropertyRef Name="unit_of_measurement_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_storage_ingredients">
+    <End Role="storage_ingredient" Type="Self.storage_ingredient" Multiplicity="1" />
+    <End Role="shipment" Type="Self.shipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="storage_ingredient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="shipment">
+        <PropertyRef Name="id_storage_ingredient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__storage_i__unit___3C69FB99">
+    <End Role="units_of_measurement" Type="Self.units_of_measurement" Multiplicity="0..1" />
+    <End Role="storage_ingredient" Type="Self.storage_ingredient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="units_of_measurement">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="storage_ingredient">
+        <PropertyRef Name="unit_of_measurement_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectRestaurantEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="checks" EntityType="Self.checks" />
+    <EntitySet Name="content_order_ingredients" EntityType="Self.content_order_ingredients" />
+    <EntitySet Name="cooking" EntityType="Self.cooking" />
+    <EntitySet Name="ingredients" EntityType="Self.ingredients" />
+    <EntitySet Name="menu" EntityType="Self.menu" />
+    <EntitySet Name="order_ingredients" EntityType="Self.order_ingredients" />
+    <EntitySet Name="orders" EntityType="Self.orders" />
+    <EntitySet Name="platens" EntityType="Self.platens" />
+    <EntitySet Name="providers" EntityType="Self.providers" />
+    <EntitySet Name="recipes" EntityType="Self.recipes" />
+    <EntitySet Name="shipment" EntityType="Self.shipment" />
+    <EntitySet Name="statuses" EntityType="Self.statuses" />
+    <EntitySet Name="storage_ingredient" EntityType="Self.storage_ingredient" />
+    <EntitySet Name="type_dish" EntityType="Self.type_dish" />
+    <EntitySet Name="units_of_measurement" EntityType="Self.units_of_measurement" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <EntitySet Name="waiters" EntityType="Self.waiters" />
+    <AssociationSet Name="FK__cooking__check_i__48CFD27E" Association="Self.FK__cooking__check_i__48CFD27E">
+      <End Role="checks" EntitySet="checks" />
+      <End Role="cooking" EntitySet="cooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_menu" Association="Self.FK_menu">
+      <End Role="menu" EntitySet="menu" />
+      <End Role="checks" EntitySet="checks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders" Association="Self.FK_orders">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="checks" EntitySet="checks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__content_o__unit___440B1D61" Association="Self.FK__content_o__unit___440B1D61">
+      <End Role="units_of_measurement" EntitySet="units_of_measurement" />
+      <End Role="content_order_ingredients" EntitySet="content_order_ingredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contents" Association="Self.FK_contents">
+      <End Role="content_order_ingredients" EntitySet="content_order_ingredients" />
+      <End Role="shipment" EntitySet="shipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ingredients" Association="Self.FK_ingredients">
+      <End Role="ingredients" EntitySet="ingredients" />
+      <End Role="content_order_ingredients" EntitySet="content_order_ingredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_ingredients" Association="Self.FK_order_ingredients">
+      <End Role="order_ingredients" EntitySet="order_ingredients" />
+      <End Role="content_order_ingredients" EntitySet="content_order_ingredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cooking__status___49C3F6B7" Association="Self.FK__cooking__status___49C3F6B7">
+      <End Role="statuses" EntitySet="statuses" />
+      <End Role="cooking" EntitySet="cooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__storage_i__ingre__3D5E1FD2" Association="Self.FK__storage_i__ingre__3D5E1FD2">
+      <End Role="ingredients" EntitySet="ingredients" />
+      <End Role="storage_ingredient" EntitySet="storage_ingredient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ingredient" Association="Self.FK_ingredient">
+      <End Role="ingredients" EntitySet="ingredients" />
+      <End Role="recipes" EntitySet="recipes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__menu__type_dish___1B0907CE" Association="Self.FK__menu__type_dish___1B0907CE">
+      <End Role="type_dish" EntitySet="type_dish" />
+      <End Role="menu" EntitySet="menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_menus" Association="Self.FK_menus">
+      <End Role="menu" EntitySet="menu" />
+      <End Role="recipes" EntitySet="recipes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_ing__provi__239E4DCF" Association="Self.FK__order_ing__provi__239E4DCF">
+      <End Role="providers" EntitySet="providers" />
+      <End Role="order_ingredients" EntitySet="order_ingredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_ing__statu__24927208" Association="Self.FK__order_ing__statu__24927208">
+      <End Role="statuses" EntitySet="statuses" />
+      <End Role="order_ingredients" EntitySet="order_ingredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__status_i__108B795B" Association="Self.FK__orders__status_i__108B795B">
+      <End Role="statuses" EntitySet="statuses" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__table_id__117F9D94" Association="Self.FK__orders__table_id__117F9D94">
+      <End Role="platens" EntitySet="platens" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__waiter_i__1273C1CD" Association="Self.FK__orders__waiter_i__1273C1CD">
+      <End Role="waiters" EntitySet="waiters" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__recipes__unit_of__34C8D9D1" Association="Self.FK__recipes__unit_of__34C8D9D1">
+      <End Role="units_of_measurement" EntitySet="units_of_measurement" />
+      <End Role="recipes" EntitySet="recipes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_storage_ingredients" Association="Self.FK_storage_ingredients">
+      <End Role="storage_ingredient" EntitySet="storage_ingredient" />
+      <End Role="shipment" EntitySet="shipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__storage_i__unit___3C69FB99" Association="Self.FK__storage_i__unit___3C69FB99">
+      <End Role="units_of_measurement" EntitySet="units_of_measurement" />
+      <End Role="storage_ingredient" EntitySet="storage_ingredient" />
+    </AssociationSet>
+    <FunctionImport Name="getIngredients" ReturnType="Collection(ProjectRestaurantModel.IngrList)">
+      <Parameter Name="dish_name" Mode="In" Type="String" />
+      <Parameter Name="dish_count" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getStorageState" EntitySet="storage_ingredient" ReturnType="Collection(ProjectRestaurantModel.storage_ingredient)">
+      <Parameter Name="ingr_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="getIngredients_Result">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Column1" Nullable="true" />
+    <Property Type="String" Name="name1" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="IngrList">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Column1" Nullable="true" />
+    <Property Type="String" Name="name1" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getStorageState_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="count" Nullable="false" />
+    <Property Type="Int32" Name="unit_of_measurement_id" Nullable="true" />
+    <Property Type="Int32" Name="ingredient_id" Nullable="true" />
+    <Property Type="Int32" Name="id1" Nullable="true" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

@@ -66,9 +66,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="checks.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="chef\ChefWindow.xaml.cs">
       <DependentUpon>ChefWindow.xaml</DependentUpon>
     </Compile>
@@ -78,113 +75,89 @@
     <Compile Include="chef\EditRecipe.xaml.cs">
       <DependentUpon>EditRecipe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="content_order_ingredients.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cooking.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FCookingCheck_Result.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FCooking_Result.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ingredients.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="admin\InsertPage.xaml.cs">
       <DependentUpon>InsertPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginScreen.xaml.cs">
-      <DependentUpon>LoginScreen.xaml</DependentUpon>
+    <Compile Include="chef\IngredientsList.xaml.cs">
+      <DependentUpon>IngredientsList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="menu.cs">
+    <Compile Include="Entity\checks.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="orders.cs">
+    <Compile Include="Entity\content_order_ingredients.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="order_ingredients.cs">
+    <Compile Include="Entity\cooking.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="platens.cs">
+    <Compile Include="Entity\getIngredients_Result.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="providers.cs">
+    <Compile Include="Entity\getStorageState_Result.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="recipes.cs">
+    <Compile Include="Entity\ingredients.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="RestaurantModel.Context.cs">
+    <Compile Include="Entity\IngrList.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\menu.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\orders.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\order_ingredients.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\platens.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\providers.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\recipes.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\RestaurantModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RestaurantModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="RestaurantModel.cs">
+    <Compile Include="Entity\RestaurantModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="RestaurantModel.Designer.cs">
+    <Compile Include="Entity\RestaurantModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RestaurantModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="shipment_ingredients.cs">
+    <Compile Include="Entity\shipment.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+    <Compile Include="Entity\statuses.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
+    <Compile Include="Entity\storage_ingredient.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="statuses.cs">
+    <Compile Include="Entity\type_dish.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="storage_ingredient.cs">
+    <Compile Include="Entity\units_of_measurement.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="Entity\users.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="type_dish.cs">
+    <Compile Include="Entity\waiters.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="units_of_measurement.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="users.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="usp_GetErrorInfo_Result.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="vChecks.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="vChecks_ac.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="vContent.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="vOrder.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="vOrders.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="vRecipes.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="vShipment.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="waiters.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    <Compile Include="LoginScreen.xaml.cs">
+      <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
     <Page Include="chef\ChefWindow.xaml">
       <SubType>Designer</SubType>
@@ -199,6 +172,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="chef\EditRecipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="chef\IngredientsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,19 +214,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Entity\RestaurantModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RestaurantModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entity\RestaurantModel.edmx.diagram">
+      <DependentUpon>RestaurantModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <EntityDeploy Include="RestaurantModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RestaurantModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="RestaurantModel.edmx.diagram">
-      <DependentUpon>RestaurantModel.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -258,19 +235,19 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RestaurantModel.Context.tt">
+    <Folder Include="accountant\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entity\RestaurantModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RestaurantModel.edmx</DependentUpon>
       <LastGenOutput>RestaurantModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="RestaurantModel.tt">
+    <Content Include="Entity\RestaurantModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RestaurantModel.edmx</DependentUpon>
       <LastGenOutput>RestaurantModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="accountant\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

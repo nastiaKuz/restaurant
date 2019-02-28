@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using wpf_test.Entity;
 
 namespace wpf_test
 {
@@ -18,8 +19,8 @@ namespace wpf_test
     /// Interaction logic for InsertPage.xaml
     /// </summary>
     public partial class InsertPage : Window
-    { 
-        Project_Restaurant1Entities _db = new Project_Restaurant1Entities();
+    {
+        ProjectRestaurantEntities _db = new ProjectRestaurantEntities();
         public InsertPage()
         {
             InitializeComponent();

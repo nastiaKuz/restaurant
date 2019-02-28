@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectRestaurantModelStoreContainer" CdmEntityContainer="ProjectRestaurantEntities">
+    <EntitySetMapping Name="checks">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.checks">
+        <MappingFragment StoreEntitySet="checks">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="content_order_ingredients">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.content_order_ingredients">
+        <MappingFragment StoreEntitySet="content_order_ingredients">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="order_ingredients_id" ColumnName="order_ingredients_id" />
+          <ScalarProperty Name="ingredient_id" ColumnName="ingredient_id" />
+          <ScalarProperty Name="unit_of_measurement_id" ColumnName="unit_of_measurement_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cooking">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.cooking">
+        <MappingFragment StoreEntitySet="cooking">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="receive_time" ColumnName="receive_time" />
+          <ScalarProperty Name="execute_time" ColumnName="execute_time" />
+          <ScalarProperty Name="check_id" ColumnName="check_id" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ingredients">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.ingredients">
+        <MappingFragment StoreEntitySet="ingredients">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="menu">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.menu">
+        <MappingFragment StoreEntitySet="menu">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="unit_of_measurement_id" ColumnName="unit_of_measurement_id" />
+          <ScalarProperty Name="type_dish_id" ColumnName="type_dish_id" />
+          <ScalarProperty Name="dish_name" ColumnName="dish_name" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_ingredients">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.order_ingredients">
+        <MappingFragment StoreEntitySet="order_ingredients">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="order_time" ColumnName="order_time" />
+          <ScalarProperty Name="execute_time" ColumnName="execute_time" />
+          <ScalarProperty Name="provider_id" ColumnName="provider_id" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.orders">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="table_id" ColumnName="table_id" />
+          <ScalarProperty Name="waiter_id" ColumnName="waiter_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="platens">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.platens">
+        <MappingFragment StoreEntitySet="platens">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="people_amount" ColumnName="people_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="providers">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.providers">
+        <MappingFragment StoreEntitySet="providers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recipes">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.recipes">
+        <MappingFragment StoreEntitySet="recipes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+          <ScalarProperty Name="ingredient_id" ColumnName="ingredient_id" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="unit_of_measurement_id" ColumnName="unit_of_measurement_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shipment">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.shipment">
+        <MappingFragment StoreEntitySet="shipment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_content" ColumnName="id_content" />
+          <ScalarProperty Name="id_storage_ingredient" ColumnName="id_storage_ingredient" />
+          <ScalarProperty Name="time" ColumnName="time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="statuses">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.statuses">
+        <MappingFragment StoreEntitySet="statuses">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="storage_ingredient">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.storage_ingredient">
+        <MappingFragment StoreEntitySet="storage_ingredient">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="unit_of_measurement_id" ColumnName="unit_of_measurement_id" />
+          <ScalarProperty Name="ingredient_id" ColumnName="ingredient_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_dish">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.type_dish">
+        <MappingFragment StoreEntitySet="type_dish">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="units_of_measurement">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.units_of_measurement">
+        <MappingFragment StoreEntitySet="units_of_measurement">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="waiters">
+      <EntityTypeMapping TypeName="ProjectRestaurantModel.waiters">
+        <MappingFragment StoreEntitySet="waiters">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getIngredients" FunctionName="ProjectRestaurantModel.Store.getIngredients">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectRestaurantModel.IngrList">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="name1" ColumnName="name1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getStorageState" FunctionName="ProjectRestaurantModel.Store.getStorageState" />
+  </EntityContainerMapping>
+</Mapping>

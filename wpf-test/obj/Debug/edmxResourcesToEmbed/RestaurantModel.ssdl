@@ -63,7 +63,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="time" Type="datetime" Nullable="false" />
+    <Property Name="time" Type="date" Nullable="false" />
     <Property Name="status_id" Type="int" />
     <Property Name="table_id" Type="int" />
     <Property Name="waiter_id" Type="int" />
@@ -516,6 +516,7 @@ warning 6002: The table/view 'Project_Restaurant1.dbo.vShipment' does not have a
     </ReturnType>
   </Function>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="getActiveOrders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="PUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="p_id" Type="int" Mode="In" />
     <Parameter Name="p_login" Type="nvarchar" Mode="In" />

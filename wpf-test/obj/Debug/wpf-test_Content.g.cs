@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("restaurantmodel.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("restaurantmodel.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("entity/restaurantmodel.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("entity/restaurantmodel.tt")]
 
 

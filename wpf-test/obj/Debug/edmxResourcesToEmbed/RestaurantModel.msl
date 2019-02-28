@@ -308,5 +308,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getActiveOrders" FunctionName="Project_Restaurant1Model.Store.getActiveOrders" />
   </EntityContainerMapping>
 </Mapping>

@@ -29,3 +29,5 @@ C:\Users\nastia\Desktop\c#\wpf-test\wpf-test\obj\Debug\chef\AddRecipe.g.cs
 C:\Users\nastia\Desktop\c#\wpf-test\wpf-test\obj\Debug\chef\AddRecipe.baml
 C:\Users\nastia\Desktop\c#\wpf-test\wpf-test\obj\Debug\chef\IngredientsList.g.cs
 C:\Users\nastia\Desktop\c#\wpf-test\wpf-test\obj\Debug\chef\IngredientsList.baml
+C:\Users\nastia\Desktop\c#\wpf-test\wpf-test\obj\Debug\chef\ConfirmReadiness.g.cs
+C:\Users\nastia\Desktop\c#\wpf-test\wpf-test\obj\Debug\chef\ConfirmReadiness.baml

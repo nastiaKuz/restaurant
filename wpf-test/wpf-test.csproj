@@ -72,6 +72,9 @@
     <Compile Include="chef\AddRecipe.xaml.cs">
       <DependentUpon>AddRecipe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="chef\ConfirmReadiness.xaml.cs">
+      <DependentUpon>ConfirmReadiness.xaml</DependentUpon>
+    </Compile>
     <Compile Include="chef\EditRecipe.xaml.cs">
       <DependentUpon>EditRecipe.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,9 @@
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\cooking.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\getCurrentCooking_Result.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\getIngredients_Result.cs">
@@ -170,6 +176,10 @@
     <Page Include="chef\AddRecipe.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="chef\ConfirmReadiness.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="chef\EditRecipe.xaml">
       <SubType>Designer</SubType>

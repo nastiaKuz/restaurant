@@ -387,6 +387,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="getCurrentCooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="checkId" Type="int" Mode="In" />
+  </Function>
   <Function Name="getIngredients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dish_name" Type="nvarchar" Mode="In" />
     <Parameter Name="dish_count" Type="int" Mode="In" />

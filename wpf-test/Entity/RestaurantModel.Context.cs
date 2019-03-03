@@ -75,5 +75,23 @@ namespace wpf_test.Entity
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<storage_ingredient>("getStorageState", mergeOption, ingr_idParameter);
         }
+    
+        public virtual ObjectResult<cooking> getCurrentCooking(Nullable<int> checkId)
+        {
+            var checkIdParameter = checkId.HasValue ?
+                new ObjectParameter("checkId", checkId) :
+                new ObjectParameter("checkId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<cooking>("getCurrentCooking", checkIdParameter);
+        }
+    
+        public virtual ObjectResult<cooking> getCurrentCooking(Nullable<int> checkId, MergeOption mergeOption)
+        {
+            var checkIdParameter = checkId.HasValue ?
+                new ObjectParameter("checkId", checkId) :
+                new ObjectParameter("checkId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<cooking>("getCurrentCooking", mergeOption, checkIdParameter);
+        }
     }
 }

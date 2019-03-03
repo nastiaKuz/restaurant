@@ -532,6 +532,9 @@
     <FunctionImport Name="getStorageState" EntitySet="storage_ingredient" ReturnType="Collection(ProjectRestaurantModel.storage_ingredient)">
       <Parameter Name="ingr_id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="getCurrentCooking" EntitySet="cooking" ReturnType="Collection(ProjectRestaurantModel.cooking)">
+      <Parameter Name="checkId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getIngredients_Result">
     <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
@@ -550,5 +553,12 @@
     <Property Type="Int32" Name="ingredient_id" Nullable="true" />
     <Property Type="Int32" Name="id1" Nullable="true" />
     <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getCurrentCooking_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="DateTime" Name="receive_time" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="execute_time" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="check_id" Nullable="true" />
+    <Property Type="Int32" Name="status_id" Nullable="true" />
   </ComplexType>
 </Schema>

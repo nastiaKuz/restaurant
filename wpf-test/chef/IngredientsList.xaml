@@ -12,16 +12,14 @@
             <TextBlock Margin="10,10,85,409"><Run Text="Використати такі інгредієнти:"/></TextBlock>
             <Button IsCancel="True" Content="Ні" Margin="385,280,22,139"/>
             <Button IsDefault="True" Click="Accept_Click" Content="Так" Margin="295,280,112,139"/>
-        
+
         <DataGrid x:Name="IngredientsGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="10,57,20,176">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Назва" Binding="{Binding ingr}"/>
                 <DataGridTextColumn Header="Кількість" Binding="{Binding count}"/>
                 <DataGridTextColumn Header="Одиниця виміру" Binding="{Binding unit}"/>
             </DataGrid.Columns>
-            
-        </DataGrid>
-        <!--</StackPanel>-->
 
+        </DataGrid>
     </Grid>
 </Window>

@@ -5,28 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.chef"
         mc:Ignorable="d"
-        Title="ChefWindow" Height="450" Width="720">
+        Title="ChefWindow" Height="629.65" Width="751">
     <Grid>
-        <Grid.Resources>
-            <Style TargetType="DataGridCell">
-                <Style.Triggers>
-                    <Trigger Property="DataGridCell.IsEditing" Value="True">
-                        <Setter Property="Background" Value="#FF0000" />
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-        </Grid.Resources>
-        <TabControl x:Name="ChefMenu">
+        <TabControl x:Name="ChefMenu" Margin="10,20,0,0" HorizontalAlignment="Left" Width="723">
             <TabItem x:Name="currentChecksTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <Ellipse Height="10" Width="10" Fill="Green" />
+                        <Ellipse Height="10" Width="10" Fill="Yellow" />
                         <TextBlock Margin="3">Поточні замовлення</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <TabItem.Content>
-                    <StackPanel>
-                        <DataGrid x:Name="CurrentChecksGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
+                    <Grid Margin="0,0,5,0">
+                        <Button x:Name="updBtn" Content="Оновити" Click="updBtn_Click" Margin="625,0,0,508"/>
+                        <DataGrid x:Name="CurrentChecksGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Height="Auto" Margin="1,39,-10,304" RowBackground="#FFFF6363">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Страва" Binding="{Binding dish_name}"/>
                                 <DataGridTextColumn Header="Кількість" Binding="{Binding dish_count}"/>
@@ -40,42 +32,57 @@
                                     </DataGridTemplateColumn.HeaderTemplate>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                                 <Button x:Name="cookBtn" Content="Розпочати виконання" Click="cookBtn_Click"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <!--<DataGridComboBoxColumn x:Name="Status" Header="Статус"
-                                                        SelectedValueBinding="{Binding statuses, Mode=TwoWay}"  
-                                                        DisplayMemberPath="{Binding status}" />-->
-                                <!--<DataGridComboBoxColumn x:Name="colStatus" Header="Статус"
-                                                        SelectedValueBinding="{Binding id}"
-                                                        DisplayMemberPath="name" 
-                                                        SelectedValuePath="id"
-                                />-->
-
                             </DataGrid.Columns>
                         </DataGrid>
-                    </StackPanel>
+                        <TextBlock x:Name="inProgressTextBlock" HorizontalAlignment="Left" Margin="10,264,0,0" TextWrapping="Wrap" Text="Замовлення, що виконуються" VerticalAlignment="Top" Width="213" Height="23"/>
+                        <DataGrid x:Name="InProgressGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,292,-10,10" Foreground="Black" RowBackground="Yellow">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Страва" Binding="{Binding dish_name}"/>
+                                <DataGridTextColumn Header="Кількість" Binding="{Binding dish_count}"/>
+                                <DataGridTextColumn Header="Час" Binding="{Binding receive_time}"/>
+                                <DataGridTextColumn Header="Статус" Binding="{Binding status}"/>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="Дії"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <Button x:Name="readyBtn" Content="Готово" Click="readyBtn_Click"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </TabItem.Content>
             </TabItem>
             <TabItem x:Name="allChecksTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <Ellipse Height="10" Width="10" Fill="Black" />
-                        <TextBlock Margin="3">Всі замовлення</TextBlock>
+                        <Ellipse Height="10" Width="10" Fill="Green" />
+                        <TextBlock Margin="3">Виконані замовлення</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid Margin="0,100,0,0">
-                        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="5,-93,0,0" TextWrapping="Wrap" Text="Оберіть дату" VerticalAlignment="Top" Width="135" Height="23"/>
-                        <DatePicker Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="85,-97,0,0" IsDropDownOpen="True" SelectedDateChanged="datePicker_SelectedDateChanged" IsTodayHighlighted="True"/>
-                        <DataGrid x:Name="AllChecksGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,-50,0,0">
+                        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="0,-86,0,0" TextWrapping="Wrap" Text="Оберіть дату" VerticalAlignment="Top" Width="99" Height="23"/>
+                        <DatePicker Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,-88,0,0" SelectedDateChanged="datePicker_SelectedDateChanged" IsTodayHighlighted="True"/>
+                        <DataGrid x:Name="AllChecksGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,-50,0,10" RowBackground="#FF46E40B">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Страва" Binding="{Binding dish_name}"/>
                                 <DataGridTextColumn Header="Кількість" Binding="{Binding dish_count}"/>
-                                <DataGridTextColumn Header="Час" Binding="{Binding time}"/>
+                                <DataGridTextColumn Header="Час отримання" Binding="{Binding receive_time}"/>
+                                <DataGridTextColumn Header="Час виконання" Binding="{Binding execute_time}"/>
                                 <DataGridTextColumn Header="Статус" Binding="{Binding status}"/>
                             </DataGrid.Columns>
                         </DataGrid>

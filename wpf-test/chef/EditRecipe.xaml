@@ -17,7 +17,6 @@
         <Button x:Name="addIngredient" Content="Додати" HorizontalAlignment="Left" Margin="497,116,0,0" VerticalAlignment="Top" Width="59" Height="22" Click="addIngrBtn_Click"/>
         <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="210,95,0,0" TextWrapping="Wrap" Text="Одиниця вимірювання" VerticalAlignment="Top" Width="135" Height="23"/>
         <ComboBox x:Name="unitComboBox" HorizontalAlignment="Left" Margin="243,116,0,0" VerticalAlignment="Top" Width="59" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="UnitComboBox_OnSelectionChanged"/>
-
         <DataGrid x:Name="IngredientsGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,198,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Інгредієнт" Binding="{Binding ingredient}"/>
@@ -32,7 +31,6 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button x:Name="updateBtn" Content="Edit" Click="updateIngrBtn_Click"/>
                                 <Button x:Name="deleteBtn" Content="Delete" Click="deleteIngrBtn_Click"/>
                             </StackPanel>
                         </DataTemplate>
@@ -40,7 +38,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="74,60,0,0" TextWrapping="Wrap" Text="Назва страви" VerticalAlignment="Top"/>
     </Grid>
 </Window>

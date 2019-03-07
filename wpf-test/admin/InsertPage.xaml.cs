@@ -33,18 +33,10 @@ namespace wpf_test
                 login = nametextBox1.Text,
                 password = rolecomboBox.Text
             };
-            //try
-            //{
-                _db.users.Add(newItem);
-                _db.SaveChanges();
-                MainWindow.datagrid.ItemsSource = _db.users.ToList();
-                this.Hide();
-            //}
-            //catch (Exception exception)
-            //{
-            //    Console.WriteLine(exception);
-            //    throw;
-            //}
+            _db.users.Add(newItem);
+            _db.SaveChanges();
+            MainWindow.datagrid.ItemsSource = _db.users.ToList();
+            this.Hide();
         }
     }
 }

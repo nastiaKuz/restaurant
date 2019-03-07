@@ -11,24 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using wpf_test.Entity;
 
-namespace wpf_test.chef
+namespace wpf_test.admin
 {
     /// <summary>
-    /// Interaction logic for ConfirmReadiness.xaml
+    /// Interaction logic for AdminWindow.xaml
     /// </summary>
-    public partial class ConfirmReadiness : Window
+    public partial class AdminWindow : Window
     {
-        public ConfirmReadiness(string message)
+        public AdminWindow()
         {
             InitializeComponent();
-            messageTextBox.Text = message;
-        }
-
-        private void Accept_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
         }
     }
 }

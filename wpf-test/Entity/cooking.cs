@@ -16,7 +16,7 @@ namespace wpf_test.Entity
     {
         public int id { get; set; }
         public System.DateTime receive_time { get; set; }
-        public System.DateTime execute_time { get; set; }
+        public Nullable<System.DateTime> execute_time { get; set; }
         public Nullable<int> check_id { get; set; }
         public Nullable<int> status_id { get; set; }
     

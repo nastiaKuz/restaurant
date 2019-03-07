@@ -11,7 +11,7 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock>Ви підтверджуєте готовність замовлення?</TextBlock>
+        <TextBlock Name="messageTextBox" Text="{Binding message}"></TextBlock>
         <WrapPanel Grid.Row="2" HorizontalAlignment="Right" Margin="0,15,0,0">
             <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="0,0,10,0" Content="Так"/>
             <Button IsCancel="True" MinWidth="60" Content="Відмінити"/>

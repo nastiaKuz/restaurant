@@ -26,7 +26,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="receive_time" Type="datetime" Nullable="false" />
-    <Property Name="execute_time" Type="datetime" Nullable="false" />
+    <Property Name="execute_time" Type="datetime" />
     <Property Name="check_id" Type="int" />
     <Property Name="status_id" Type="int" />
   </EntityType>
@@ -159,7 +159,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__cooking__check_i__48CFD27E">
+  <Association Name="FK__cooking__check_i__5BE2A6F2">
     <End Role="checks" Type="Self.checks" Multiplicity="0..1" />
     <End Role="cooking" Type="Self.cooking" Multiplicity="*" />
     <ReferentialConstraint>
@@ -171,7 +171,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__cooking__status___49C3F6B7">
+  <Association Name="FK__cooking__status___5CD6CB2B">
     <End Role="statuses" Type="Self.statuses" Multiplicity="0..1" />
     <End Role="cooking" Type="Self.cooking" Multiplicity="*" />
     <ReferentialConstraint>
@@ -255,8 +255,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__recipes__unit_of__34C8D9D1">
-    <End Role="units_of_measurement" Type="Self.units_of_measurement" Multiplicity="0..1" />
+  <Association Name="FK__recipes__unit_of__68487DD7">
+    <End Role="units_of_measurement" Type="Self.units_of_measurement" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="recipes" Type="Self.recipes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="units_of_measurement">
@@ -304,7 +306,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ingredient">
-    <End Role="ingredients" Type="Self.ingredients" Multiplicity="1" />
+    <End Role="ingredients" Type="Self.ingredients" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="recipes" Type="Self.recipes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ingredients">
@@ -340,7 +344,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_menus">
-    <End Role="menu" Type="Self.menu" Multiplicity="1" />
+    <End Role="menu" Type="Self.menu" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="recipes" Type="Self.recipes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="menu">
@@ -390,6 +396,9 @@
   <Function Name="getCurrentCooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="checkId" Type="int" Mode="In" />
   </Function>
+  <Function Name="getCurrentDish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dishName" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="getIngredients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dish_name" Type="nvarchar" Mode="In" />
     <Parameter Name="dish_count" Type="int" Mode="In" />
@@ -419,11 +428,11 @@
       <End Role="units_of_measurement" EntitySet="units_of_measurement" />
       <End Role="content_order_ingredients" EntitySet="content_order_ingredients" />
     </AssociationSet>
-    <AssociationSet Name="FK__cooking__check_i__48CFD27E" Association="Self.FK__cooking__check_i__48CFD27E">
+    <AssociationSet Name="FK__cooking__check_i__5BE2A6F2" Association="Self.FK__cooking__check_i__5BE2A6F2">
       <End Role="checks" EntitySet="checks" />
       <End Role="cooking" EntitySet="cooking" />
     </AssociationSet>
-    <AssociationSet Name="FK__cooking__status___49C3F6B7" Association="Self.FK__cooking__status___49C3F6B7">
+    <AssociationSet Name="FK__cooking__status___5CD6CB2B" Association="Self.FK__cooking__status___5CD6CB2B">
       <End Role="statuses" EntitySet="statuses" />
       <End Role="cooking" EntitySet="cooking" />
     </AssociationSet>
@@ -451,7 +460,7 @@
       <End Role="waiters" EntitySet="waiters" />
       <End Role="orders" EntitySet="orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__recipes__unit_of__34C8D9D1" Association="Self.FK__recipes__unit_of__34C8D9D1">
+    <AssociationSet Name="FK__recipes__unit_of__68487DD7" Association="Self.FK__recipes__unit_of__68487DD7">
       <End Role="units_of_measurement" EntitySet="units_of_measurement" />
       <End Role="recipes" EntitySet="recipes" />
     </AssociationSet>

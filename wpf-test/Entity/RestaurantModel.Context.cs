@@ -93,5 +93,14 @@ namespace wpf_test.Entity
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<cooking>("getCurrentCooking", mergeOption, checkIdParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> getCurrentDish(string dishName)
+        {
+            var dishNameParameter = dishName != null ?
+                new ObjectParameter("dishName", dishName) :
+                new ObjectParameter("dishName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getCurrentDish", dishNameParameter);
+        }
     }
 }

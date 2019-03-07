@@ -33,7 +33,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="receive_time" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="execute_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="execute_time" Type="DateTime" Precision="3" />
     <Property Name="check_id" Type="Int32" />
     <Property Name="status_id" Type="Int32" />
     <NavigationProperty Name="checks" Relationship="Self.FK__cooking__check_i__48CFD27E" FromRole="cooking" ToRole="checks" />
@@ -534,6 +534,9 @@
     </FunctionImport>
     <FunctionImport Name="getCurrentCooking" EntitySet="cooking" ReturnType="Collection(ProjectRestaurantModel.cooking)">
       <Parameter Name="checkId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getCurrentDish" ReturnType="Collection(Int32)">
+      <Parameter Name="dishName" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getIngredients_Result">

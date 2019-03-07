@@ -36,14 +36,15 @@ namespace wpf_test.chef
             public int check_id { get; set; }
             public string dish_name { get; set; }
             public int dish_count { get; set; }
-            public DateTime receive_time { get; set; }
-            public DateTime execute_time { get; set; }
+            public DateTime? receive_time { get; set; }
+            public DateTime? execute_time { get; set; }
             public string status { get; set; }
         }
 
         private class MenuTable
         {
-            public int id { get; set; }
+            public int recipe_id { get; set; }
+            public int menu_id { get; set; }
             public string name { get; set; }
         }
 
@@ -125,9 +126,12 @@ namespace wpf_test.chef
         {
             var Items = (from recipe_item in _db.recipes
                 join menu_item in _db.menu
-                    on recipe_item.menu_id equals menu_item.id
+                on recipe_item.menu_id equals menu_item.id
+                orderby menu_item.dish_name
                 select new MenuTable
                 {
+                    menu_id = menu_item.id,
+                    recipe_id = recipe_item.menu_id,
                     name = menu_item.dish_name
                 }).Distinct();
             return Items.ToList();
@@ -142,7 +146,7 @@ namespace wpf_test.chef
 
         private void AddRecipeBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            AddRecipe addRecipePage = new AddRecipe();
+            AddDish addRecipePage = new AddDish();
             addRecipePage.ShowDialog();
         }
 
@@ -152,12 +156,6 @@ namespace wpf_test.chef
             EditRecipe updRecipe = new EditRecipe(name);
             updRecipe.ShowDialog();
         }
-
-        private void deleteBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             DateTime date = Convert.ToDateTime(datePicker.SelectedDate);
@@ -211,7 +209,7 @@ namespace wpf_test.chef
             cookingCheck cookCheck = (InProgressGrid.SelectedItem as cookingCheck);
             int check_id = cookCheck.check_id;
             Button btn = (Button) sender;
-            ConfirmReadiness confWindow = new ConfirmReadiness();
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте готовність замовлення?");
             if (confWindow.ShowDialog() == true && btn.IsEnabled)
             {
                 cooking curCooking = _db.getCurrentCooking(check_id).Single();
@@ -234,5 +232,22 @@ namespace wpf_test.chef
         {
             CurrentChecksGrid.ItemsSource = GetCurrentChecks();
         }
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення рецепту?");
+            if (confWindow.ShowDialog() == true)
+            {
+                int menu_id = (RecipesGrid.SelectedItem as MenuTable).menu_id;
+                var deleteDish = _db.menu.First(c => c.id == menu_id);
+                _db.menu.Remove(deleteDish);
+                _db.SaveChanges();
+                RecipesGrid.ItemsSource = GetItems().ToList();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+
     }
 }

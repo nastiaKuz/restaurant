@@ -66,11 +66,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="admin\AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="chef\ChefWindow.xaml.cs">
       <DependentUpon>ChefWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="chef\AddRecipe.xaml.cs">
-      <DependentUpon>AddRecipe.xaml</DependentUpon>
+    <Compile Include="chef\AddDish.xaml.cs">
+      <DependentUpon>AddDish.xaml</DependentUpon>
     </Compile>
     <Compile Include="chef\ConfirmReadiness.xaml.cs">
       <DependentUpon>ConfirmReadiness.xaml</DependentUpon>
@@ -165,6 +168,10 @@
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="admin\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="chef\ChefWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -173,7 +180,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="chef\AddRecipe.xaml">
+    <Page Include="chef\AddDish.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

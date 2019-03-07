@@ -97,9 +97,9 @@
                     </StackPanel>
                 </TabItem.Header>
                 <TabItem.Content>
-                    <StackPanel>
-                        <Button x:Name="addRecipeBtn" Margin="0,5,267,5" Content="Створити рецепт" Click="AddRecipeBtn_OnClick"/>
-                        <DockPanel>
+                    <Grid Margin="0,57,0,0">
+                        <Button x:Name="addRecipeBtn" Margin="0,-50,561,499" Content="Створити рецепт" Click="AddRecipeBtn_OnClick"/>
+                       
                             <DataGrid x:Name="RecipesGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Страва" Binding="{Binding name}"/>
@@ -120,8 +120,8 @@
                                     </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
-                        </DockPanel>
-                    </StackPanel>
+                      
+                    </Grid>
                 </TabItem.Content>
             </TabItem>
         </TabControl>

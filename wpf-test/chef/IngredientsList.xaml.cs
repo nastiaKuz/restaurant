@@ -58,8 +58,17 @@ namespace wpf_test.chef
             foreach (var ingredient in newList)
             {
                 storage_ingredient upd = _db.getStorageState(ingredient.id).Single();
-                upd.count = upd.count - ingredient.count;
-                _db.SaveChanges();
+                if (upd.count < ingredient.count)
+                {
+                    MessageBox.Show("Недостатня кількість інгредієнтів.");
+                    this.DialogResult = false;
+                    return;
+                }
+                else
+                {
+                    upd.count = upd.count - ingredient.count;
+                    _db.SaveChanges();
+                }
             }
             this.DialogResult = true;
         }

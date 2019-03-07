@@ -21,8 +21,11 @@ namespace wpf_test.chef
     public partial class EditRecipe : Window
     {
         ProjectRestaurantEntities _db = new ProjectRestaurantEntities();
+        private int menuId;
+        private string dishName;
         private class RecipeContent
         {
+            public int menu_id { get; set; }
             public int id { get; set; }
             public string dish_name { get; set; }
             public string ingredient { get; set; }
@@ -37,6 +40,7 @@ namespace wpf_test.chef
                 join unit_item in _db.units_of_measurement on recipe_item.unit_of_measurement_id equals unit_item.id
                 select new RecipeContent
                 {
+                    menu_id = menu_item.id,
                     id = recipe_item.id,
                     dish_name = menu_item.dish_name,
                     ingredient = ingredient_item.name,
@@ -53,9 +57,11 @@ namespace wpf_test.chef
         {
             InitializeComponent();
             fillComboBoxes();
+            dishName = name;
             content = GetItems(name).ToList();
+            menuId = content[0].menu_id;
             IngredientsGrid.ItemsSource = content;
-            nameTextBox.Text = content[0].dish_name;
+            nameTextBox.Text = name;
         }
         void fillComboBoxes()
         {
@@ -69,32 +75,59 @@ namespace wpf_test.chef
         }
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Hide();
         }
 
         private void addIngrBtn_Click(object sender, RoutedEventArgs e)
         {
-             
+            if (ingrAmountTextBox.Text != "")
+            {
+                recipes newItem = new recipes()
+                {
+                    menu_id = menuId,
+                    unit_of_measurement_id = unitId,
+                    ingredient_id = ingredientId,
+                    count = Convert.ToInt32(ingrAmountTextBox.Text)
+                };
+                _db.recipes.Add(newItem);
+                _db.SaveChanges();
+                IngredientsGrid.ItemsSource = GetItems(dishName).ToList();
+                ingredientComboBox.SelectedIndex = -1;
+                unitComboBox.SelectedIndex = -1;
+                ingrAmountTextBox.Text = "";
+            }
         }
 
         private void IngredientComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int ingredientId = Convert.ToInt32(ingredientComboBox.SelectedValue);
+            ingredientId = Convert.ToInt32(ingredientComboBox.SelectedValue);
         }
 
         private void updateIngrBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void deleteIngrBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення рецепту?");
+            if (confWindow.ShowDialog() == true)
+            {
+                int recipe_id = (IngredientsGrid.SelectedItem as RecipeContent).id;
+                var deleteIngr = _db.recipes.First(c => c.id == recipe_id);
+                _db.recipes.Remove(deleteIngr);
+                _db.SaveChanges();
+                IngredientsGrid.ItemsSource = GetItems(dishName).ToList();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
         }
 
         private void UnitComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int unitId = Convert.ToInt32(unitComboBox.SelectedValue);
+            unitId = Convert.ToInt32(unitComboBox.SelectedValue);
         }
     }
 }

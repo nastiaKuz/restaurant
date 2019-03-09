@@ -177,5 +177,7 @@
     <FunctionImportMapping FunctionImportName="getStorageState" FunctionName="ProjectRestaurantModel.Store.getStorageState" />
     <FunctionImportMapping FunctionImportName="getCurrentCooking" FunctionName="ProjectRestaurantModel.Store.getCurrentCooking" />
     <FunctionImportMapping FunctionImportName="getCurrentDish" FunctionName="ProjectRestaurantModel.Store.getCurrentDish" />
+    <FunctionImportMapping FunctionImportName="getDishInfo" FunctionName="ProjectRestaurantModel.Store.getDishInfo" />
+    <FunctionImportMapping FunctionImportName="getUserInfo" FunctionName="ProjectRestaurantModel.Store.getUserInfo" />
   </EntityContainerMapping>
 </Mapping>

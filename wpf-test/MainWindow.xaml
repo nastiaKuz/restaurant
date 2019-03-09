@@ -7,28 +7,5 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <DockPanel>
-        <DataGrid x:Name="myDataGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="№" Binding="{Binding id}"/>
-                <DataGridTextColumn Header="Login" Binding="{Binding login}"/>
-                <DataGridTextColumn Header="Password" Binding="{Binding password}"/>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.HeaderTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="Action"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.HeaderTemplate>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button x:Name="insertBtn" Content="Insert" Click="insertBtn_Click"/>
-                                <Button x:Name="updateBtn" Content="Edit"/>
-                                <Button x:Name="deleteBtn" Content="Delete" Click="deleteBtn_Click"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
     </DockPanel>
 </Window>

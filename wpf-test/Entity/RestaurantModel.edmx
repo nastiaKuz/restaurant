@@ -404,12 +404,18 @@
         <Function Name="getCurrentDish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dishName" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="getDishInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dishId" Type="int" Mode="In" />
+        </Function>
         <Function Name="getIngredients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dish_name" Type="nvarchar" Mode="In" />
           <Parameter Name="dish_count" Type="int" Mode="In" />
         </Function>
         <Function Name="getStorageState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ingr_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="ProjectRestaurantModelStoreContainer">
           <EntitySet Name="checks" EntityType="Self.checks" Schema="dbo" store:Type="Tables" />
@@ -1052,6 +1058,12 @@
           <FunctionImport Name="getCurrentDish" ReturnType="Collection(Int32)">
           <Parameter Name="dishName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="getDishInfo" EntitySet="menu" ReturnType="Collection(ProjectRestaurantModel.menu)">
+          <Parameter Name="dishId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getUserInfo" EntitySet="users" ReturnType="Collection(ProjectRestaurantModel.users)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getIngredients_Result">
           <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
@@ -1077,6 +1089,19 @@
           <Property Type="DateTime" Name="execute_time" Nullable="false" Precision="23" />
           <Property Type="Int32" Name="check_id" Nullable="true" />
           <Property Type="Int32" Name="status_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getDishInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="unit_of_measurement_id" Nullable="false" />
+          <Property Type="Int32" Name="type_dish_id" Nullable="true" />
+          <Property Type="String" Name="dish_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="size" Nullable="false" />
+          <Property Type="Int32" Name="price" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getUserInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="login" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1262,6 +1287,10 @@
           <FunctionImportMapping FunctionImportName="getCurrentCooking" FunctionName="ProjectRestaurantModel.Store.getCurrentCooking">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="getCurrentDish" FunctionName="ProjectRestaurantModel.Store.getCurrentDish" />
+          <FunctionImportMapping FunctionImportName="getDishInfo" FunctionName="ProjectRestaurantModel.Store.getDishInfo">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getUserInfo" FunctionName="ProjectRestaurantModel.Store.getUserInfo">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

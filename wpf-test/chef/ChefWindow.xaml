@@ -89,7 +89,7 @@
                     </Grid>
                 </TabItem.Content>
             </TabItem>
-            <TabItem x:Name="tabletsTab">
+            <TabItem x:Name="recipesTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Rectangle Height="10" Width="10" Fill="Black" />
@@ -99,8 +99,7 @@
                 <TabItem.Content>
                     <Grid Margin="0,57,0,0">
                         <Button x:Name="addRecipeBtn" Margin="0,-50,561,499" Content="Створити рецепт" Click="AddRecipeBtn_OnClick"/>
-                       
-                            <DataGrid x:Name="RecipesGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
+                        <DataGrid x:Name="RecipesGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Страва" Binding="{Binding name}"/>
                                     <DataGridTemplateColumn>

@@ -538,6 +538,12 @@
     <FunctionImport Name="getCurrentDish" ReturnType="Collection(Int32)">
       <Parameter Name="dishName" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="getDishInfo" EntitySet="menu" ReturnType="Collection(ProjectRestaurantModel.menu)">
+      <Parameter Name="dishId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getUserInfo" EntitySet="users" ReturnType="Collection(ProjectRestaurantModel.users)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getIngredients_Result">
     <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
@@ -563,5 +569,18 @@
     <Property Type="DateTime" Name="execute_time" Nullable="false" Precision="23" />
     <Property Type="Int32" Name="check_id" Nullable="true" />
     <Property Type="Int32" Name="status_id" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getDishInfo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="unit_of_measurement_id" Nullable="false" />
+    <Property Type="Int32" Name="type_dish_id" Nullable="true" />
+    <Property Type="String" Name="dish_name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="size" Nullable="false" />
+    <Property Type="Int32" Name="price" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="getUserInfo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="login" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="password" Nullable="false" MaxLength="50" />
   </ComplexType>
 </Schema>

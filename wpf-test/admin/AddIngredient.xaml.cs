@@ -13,29 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using wpf_test.Entity;
 
-namespace wpf_test
+namespace wpf_test.admin
 {
     /// <summary>
-    /// Interaction logic for InsertPage.xaml
+    /// Interaction logic for AddIngredient.xaml
     /// </summary>
-    public partial class InsertPage : Window
+    public partial class AddIngredient : Window
     {
         ProjectRestaurantEntities _db = new ProjectRestaurantEntities();
-        public InsertPage()
+        public AddIngredient()
         {
             InitializeComponent();
         }
-
-        private void insertBtn_Click(object sender, RoutedEventArgs e)
+        private void addIngrBtn_Click(object sender, RoutedEventArgs e)
         {
-            users newItem = new users()
+            ingredients newItem = new ingredients()
             {
-                login = nametextBox1.Text,
-                password = rolecomboBox.Text
+                name = IngrNameTextBox.Text
             };
-            _db.users.Add(newItem);
+            _db.ingredients.Add(newItem);
             _db.SaveChanges();
-            MainWindow.datagrid.ItemsSource = _db.users.ToList();
             this.Hide();
         }
     }

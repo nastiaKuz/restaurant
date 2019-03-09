@@ -66,8 +66,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="admin\AddIngredient.xaml.cs">
+      <DependentUpon>AddIngredient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\EditUser.xaml.cs">
+      <DependentUpon>EditUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="chef\ChefWindow.xaml.cs">
       <DependentUpon>ChefWindow.xaml</DependentUpon>
@@ -80,9 +86,6 @@
     </Compile>
     <Compile Include="chef\EditRecipe.xaml.cs">
       <DependentUpon>EditRecipe.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="admin\InsertPage.xaml.cs">
-      <DependentUpon>InsertPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="chef\IngredientsList.xaml.cs">
       <DependentUpon>IngredientsList.xaml</DependentUpon>
@@ -99,10 +102,16 @@
     <Compile Include="Entity\getCurrentCooking_Result.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\getDishInfo_Result.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\getIngredients_Result.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\getStorageState_Result.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\getUserInfo_Result.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\ingredients.cs">
@@ -168,15 +177,19 @@
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="admin\AddIngredient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="admin\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="chef\ChefWindow.xaml">
+    <Page Include="admin\EditUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="admin\InsertPage.xaml">
+    <Page Include="chef\ChefWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

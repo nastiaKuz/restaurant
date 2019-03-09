@@ -59,7 +59,8 @@ namespace wpf_test.chef
             fillComboBoxes();
             dishName = name;
             content = GetItems(name).ToList();
-            menuId = content[0].menu_id;
+            var item = _db.menu.First(m => m.dish_name == name);
+            menuId = item.id;
             IngredientsGrid.ItemsSource = content;
             nameTextBox.Text = name;
         }
@@ -101,11 +102,6 @@ namespace wpf_test.chef
         private void IngredientComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ingredientId = Convert.ToInt32(ingredientComboBox.SelectedValue);
-        }
-
-        private void updateIngrBtn_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         private void deleteIngrBtn_Click(object sender, RoutedEventArgs e)

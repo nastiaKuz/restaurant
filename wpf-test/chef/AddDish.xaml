@@ -5,17 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.chef"
         mc:Ignorable="d"
-        Title="Додати нову страву" Height="344" Width="611">
-    <Grid Margin="0,0,2,0">
+        Title="Додати нову страву" Height="237" Width="611">
+    <Grid Margin="0,0,2,17">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="147*"/>
+            <RowDefinition Height="43*"/>
+        </Grid.RowDefinitions>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="281,10,0,0" TextWrapping="Wrap" Text="Рецепт" VerticalAlignment="Top" FontSize="20"/>
         <TextBlock x:Name="recipeNameToAdd" HorizontalAlignment="Left" Margin="88,63,0,0" TextWrapping="Wrap" Text="Назва страви" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="63,95,0,0" TextWrapping="Wrap" Text="Тип страви" VerticalAlignment="Top" Width="73"/>
-        <TextBox x:Name="sizeDishTextBox" HorizontalAlignment="Left" Height="22" Margin="226,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="237,95,0,0" TextWrapping="Wrap" Text="Розмір" VerticalAlignment="Top"/>
-        <ComboBox x:Name="typeDishComboBox" HorizontalAlignment="Left" Margin="34,116,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="type" SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="typeDishComboBox_OnSelectionChanged"/>
-        <Button x:Name="addDishBtn" Content="Додати" HorizontalAlignment="Left" Margin="497,116,0,0" VerticalAlignment="Top" Width="59" Height="22" Click="addDishBtn_Click"/>
-        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="324,95,0,0" TextWrapping="Wrap" Text="Одиниця вимірювання" VerticalAlignment="Top" Width="135" Height="23"/>
-        <ComboBox x:Name="unitComboBox" HorizontalAlignment="Left" Margin="343,116,0,0" VerticalAlignment="Top" Width="73" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="UnitComboBox_OnSelectionChanged"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="63,107,0,0" TextWrapping="Wrap" Text="Тип страви" VerticalAlignment="Top" Width="73"/>
+        <TextBox x:Name="sizeDishTextBox" HorizontalAlignment="Left" Height="22" Margin="226,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.RowSpan="2"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="237,107,0,0" TextWrapping="Wrap" Text="Розмір" VerticalAlignment="Top"/>
+        <ComboBox x:Name="typeDishComboBox" HorizontalAlignment="Left" Margin="34,133,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="type" SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="typeDishComboBox_OnSelectionChanged" Grid.RowSpan="2"/>
+        <Button x:Name="addDishBtn" Content="Додати" HorizontalAlignment="Left" Margin="497,133,0,0" VerticalAlignment="Top" Width="59" Height="22" Click="addDishBtn_Click" Grid.RowSpan="2"/>
+        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="324,107,0,0" TextWrapping="Wrap" Text="Одиниця вимірювання" VerticalAlignment="Top" Width="135" Height="23"/>
+        <ComboBox x:Name="unitComboBox" HorizontalAlignment="Left" Margin="343,133,0,0" VerticalAlignment="Top" Width="73" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="UnitComboBox_OnSelectionChanged" Grid.RowSpan="2"/>
         <TextBox x:Name="dishNameTextBox" HorizontalAlignment="Left" Height="22" Margin="205,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
     </Grid>
 </Window>

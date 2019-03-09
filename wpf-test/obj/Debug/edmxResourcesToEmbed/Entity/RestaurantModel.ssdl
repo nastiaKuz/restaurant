@@ -399,12 +399,18 @@
   <Function Name="getCurrentDish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dishName" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="getDishInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dishId" Type="int" Mode="In" />
+  </Function>
   <Function Name="getIngredients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dish_name" Type="nvarchar" Mode="In" />
     <Parameter Name="dish_count" Type="int" Mode="In" />
   </Function>
   <Function Name="getStorageState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ingr_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="ProjectRestaurantModelStoreContainer">
     <EntitySet Name="checks" EntityType="Self.checks" Schema="dbo" store:Type="Tables" />

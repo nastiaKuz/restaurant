@@ -102,5 +102,41 @@ namespace wpf_test.Entity
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getCurrentDish", dishNameParameter);
         }
+    
+        public virtual ObjectResult<menu> getDishInfo(Nullable<int> dishId)
+        {
+            var dishIdParameter = dishId.HasValue ?
+                new ObjectParameter("dishId", dishId) :
+                new ObjectParameter("dishId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<menu>("getDishInfo", dishIdParameter);
+        }
+    
+        public virtual ObjectResult<menu> getDishInfo(Nullable<int> dishId, MergeOption mergeOption)
+        {
+            var dishIdParameter = dishId.HasValue ?
+                new ObjectParameter("dishId", dishId) :
+                new ObjectParameter("dishId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<menu>("getDishInfo", mergeOption, dishIdParameter);
+        }
+    
+        public virtual ObjectResult<users> getUserInfo(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<users>("getUserInfo", userIdParameter);
+        }
+    
+        public virtual ObjectResult<users> getUserInfo(Nullable<int> userId, MergeOption mergeOption)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<users>("getUserInfo", mergeOption, userIdParameter);
+        }
     }
 }

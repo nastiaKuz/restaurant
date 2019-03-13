@@ -66,6 +66,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="accountant\AccountantWindow.xaml.cs">
+      <DependentUpon>AccountantWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="admin\AddIngredient.xaml.cs">
       <DependentUpon>AddIngredient.xaml</DependentUpon>
     </Compile>
@@ -177,6 +180,10 @@
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="accountant\AccountantWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="admin\AddIngredient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -264,9 +271,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="accountant\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Entity\RestaurantModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -1,0 +1,58 @@
+﻿<Window x:Class="wpf_test.accountant.AccountantWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf_test.accountant"
+        mc:Ignorable="d"
+        Title="AccountantWindow" Height="533.034" Width="793.104">
+    <Grid>
+        <TabControl x:Name="ChefMenu" Margin="10,20,0,10" HorizontalAlignment="Left" Width="765">
+            <TabItem x:Name="orderChecksTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="CornflowerBlue"/>
+                        <TextBlock Margin="3">Чеки</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid Margin="0,100,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="226*"/>
+                            <ColumnDefinition Width="529*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="0,-86,0,0" TextWrapping="Wrap" Text="Оберіть дату" VerticalAlignment="Top" Width="99" Height="23"/>
+                        <DatePicker Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,-88,0,0" SelectedDateChanged="datePicker_SelectedDateChanged" IsTodayHighlighted="True"/>
+                        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="63,-86,0,0" TextWrapping="Wrap" Text="Оберіть офіціанта" VerticalAlignment="Top" Width="99" Height="23" RenderTransformOrigin="2.717,0.739" Grid.Column="1"/>
+                        <ComboBox x:Name="waiterComboBox" HorizontalAlignment="Left" Margin="168,-89,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id, Mode=OneTime}" SelectionChanged="waiterComboBoxComboBox_SelectionChanged" Height="25" Grid.Column="1"/>
+                        <DataGrid x:Name="orderChecksGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,-50,0,62" Grid.ColumnSpan="2">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Дата" Binding="{Binding time}"/>
+                                <DataGridTextColumn Header="Офіціант" Binding="{Binding waiter}"/>
+                                <DataGridTextColumn Header="Страва" Binding="{Binding dish_name}"/>
+                                <DataGridTextColumn Header="Кількість" Binding="{Binding dish_count}"/>
+                                <DataGridTextColumn Header="Ціна" Binding="{Binding price}"/>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="Дії"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <Button ToolTip="Натисніть, щоб видалити" x:Name="deleteBtn" Content="Видалити" Click="deleteBtn_Click"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button ToolTip="Натисніть, щоб вивести прибуток за день" x:Name="showIncome" Content="Вивести прибуток за поточний день" Click="showIncome_Click" Margin="0,293,0,10"/>
+                        <TextBox Name="incomeTextBox" Margin="37,293,329,10" Grid.Column="1"/>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

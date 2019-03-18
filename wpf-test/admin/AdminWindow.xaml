@@ -17,11 +17,13 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid Margin="0,57,0,0">
-                        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="0,-38,0,0" TextWrapping="Wrap" Text="Оберіть тип страв" VerticalAlignment="Top" Width="99" Height="23"/>
-                        <ComboBox x:Name="dishTypeComboBox" HorizontalAlignment="Left" Margin="118,-40,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="type" SelectedValuePath="id" SelectedValue="{Binding id, Mode=OneTime}" SelectionChanged="dishTypeComboBox_SelectionChanged"/>
+                        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="0,-39,0,0" TextWrapping="Wrap" Text="Оберіть тип страв" VerticalAlignment="Top" Width="99" Height="23"/>
+                        <ComboBox x:Name="dishTypeComboBox" HorizontalAlignment="Left" Margin="118,-41,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="type" SelectedValuePath="id" SelectedValue="{Binding id, Mode=OneTime}" SelectionChanged="dishTypeComboBox_SelectionChanged"/>
+                        <Button x:Name="addRecipeBtn" Content="Створити рецепт" Click="AddRecipeBtn_OnClick" Width="152" Margin="644,-44,0,439"/>
                         <DataGrid x:Name="MenuGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Страва" Binding="{Binding name}"/>
+                                <DataGridTextColumn Header="Тип" Binding="{Binding type}"/>
                                 <DataGridTextColumn Width="70" Header="Розмір" Binding="{Binding size}"/>
                                 <DataGridTextColumn Header="Одиниці вимірювання" Binding="{Binding units}"/>
                                 <DataGridTextColumn Width="100" Header="Ціна" Binding="{Binding price}">
@@ -40,7 +42,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateBtn" Content="Зберегти ціну" Click="updateBtn_Click"/>
+                                                <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateBtn" Content="Зберегти зміни" Click="updateBtn_Click"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>

@@ -149,13 +149,6 @@ namespace wpf_test.chef
             AddDish addRecipePage = new AddDish();
             addRecipePage.ShowDialog();
         }
-
-        private void updateBtn_Click(object sender, RoutedEventArgs e)
-        {
-            string name = (rDatagrid.SelectedItem as MenuTable).name;
-            EditRecipe updRecipe = new EditRecipe(name);
-            updRecipe.ShowDialog();
-        }
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             DateTime date = Convert.ToDateTime(datePicker.SelectedDate);
@@ -203,7 +196,6 @@ namespace wpf_test.chef
                 }
             }
         }
-
         private void readyBtn_Click(object sender, RoutedEventArgs e)
         {
             cookingCheck cookCheck = (InProgressGrid.SelectedItem as cookingCheck);
@@ -232,6 +224,14 @@ namespace wpf_test.chef
         {
             CurrentChecksGrid.ItemsSource = GetCurrentChecks();
         }
+
+        private void showBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string name = (RecipesGrid.SelectedItem as MenuTable).name;
+            ShowRecipe details = new ShowRecipe(name);
+            details.ShowDialog();
+        }
+
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
             ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення рецепту?");
@@ -248,6 +248,5 @@ namespace wpf_test.chef
                 confWindow.Hide();
             }
         }
-
     }
 }

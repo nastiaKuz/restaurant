@@ -93,6 +93,9 @@
     <Compile Include="chef\IngredientsList.xaml.cs">
       <DependentUpon>IngredientsList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="chef\ShowRecipe.xaml.cs">
+      <DependentUpon>ShowRecipe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entity\checks.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
@@ -213,6 +216,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="chef\IngredientsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="chef\ShowRecipe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

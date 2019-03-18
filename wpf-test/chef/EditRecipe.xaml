@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.chef"
         mc:Ignorable="d"
-        Title="EditRecipe" Height="450" Width="600">
+        Title="Редагувати рецепт" Height="471" Width="600">
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="199,10,0,0" TextWrapping="Wrap" Text="Рецепт" VerticalAlignment="Top" FontSize="20"/>
         <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="32" Margin="165,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199"/>
@@ -13,11 +13,11 @@
         <TextBox x:Name="ingrAmountTextBox" HorizontalAlignment="Left" Height="22" Margin="367,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="378,95,0,0" TextWrapping="Wrap" Text="Кількість" VerticalAlignment="Top"/>
         <ComboBox x:Name="ingredientComboBox" HorizontalAlignment="Left" Margin="34,116,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="IngredientComboBox_OnSelectionChanged"/>
-        <Button x:Name="saveBtn" Content="Зберегти" HorizontalAlignment="Left" Margin="150,326,0,0" VerticalAlignment="Top" Width="75" Click="saveBtn_Click"/>
+        <Button x:Name="saveBtn" Content="Зберегти" HorizontalAlignment="Left" Margin="254,389,0,0" VerticalAlignment="Top" Width="110" Click="saveBtn_Click" Height="33"/>
         <Button x:Name="addIngredient" Content="Додати" HorizontalAlignment="Left" Margin="497,116,0,0" VerticalAlignment="Top" Width="59" Height="22" Click="addIngrBtn_Click"/>
         <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="210,95,0,0" TextWrapping="Wrap" Text="Одиниця вимірювання" VerticalAlignment="Top" Width="135" Height="23"/>
         <ComboBox x:Name="unitComboBox" HorizontalAlignment="Left" Margin="243,116,0,0" VerticalAlignment="Top" Width="59" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="UnitComboBox_OnSelectionChanged"/>
-        <DataGrid x:Name="IngredientsGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,198,0,0">
+        <DataGrid x:Name="IngredientsGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,166,0,70">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Інгредієнт" Binding="{Binding ingredient}"/>
                 <DataGridTextColumn Header="Кількість" Binding="{Binding count}"/>

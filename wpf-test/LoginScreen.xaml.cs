@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using wpf_test.accountant;
+using wpf_test.admin;
 using wpf_test.chef;
 using wpf_test.Entity;
 
@@ -33,7 +35,7 @@ namespace wpf_test
             var user = _db.users.FirstOrDefault(x => x.login == txtUsername.Text && x.password == txtPassword.Password);
             if (user != null && user.login == "admin")
             {
-                MainWindow dashboard = new MainWindow();
+                AdminWindow dashboard = new AdminWindow();
                 dashboard.Show();
                 this.Close();
             } else if (user != null && user.login == "chef")
@@ -43,7 +45,9 @@ namespace wpf_test
                 this.Close();
             } else if (user != null && user.login == "accountant")
             {
-
+                AccountantWindow forAccountant = new AccountantWindow();
+                forAccountant.Show();
+                this.Close();
             }
             else
             {

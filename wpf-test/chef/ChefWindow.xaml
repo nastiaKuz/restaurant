@@ -56,7 +56,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <Button x:Name="readyBtn" Content="Готово" Click="readyBtn_Click"/>
+                                                <Button ToolTip="Натисніть, щоб змінити статус" x:Name="readyBtn" Content="Готово" Click="readyBtn_Click"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -98,7 +98,7 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid Margin="0,57,0,0">
-                        <Button x:Name="addRecipeBtn" Margin="0,-50,561,499" Content="Створити рецепт" Click="AddRecipeBtn_OnClick"/>
+                        <Button x:Name="addRecipeBtn" ToolTip="Натисніть, щоб додати новий рецепт" Margin="0,-50,561,499" Content="Створити рецепт" Click="AddRecipeBtn_OnClick"/>
                         <DataGrid x:Name="RecipesGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Страва" Binding="{Binding name}"/>
@@ -110,9 +110,9 @@
                                         </DataGridTemplateColumn.HeaderTemplate>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Button x:Name="updateBtn" Content="Edit" Click="updateBtn_Click"/>
-                                                    <Button x:Name="deleteBtn" Content="Delete" Click="deleteBtn_Click"/>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <Button ToolTip="Натисніть, щоб переглянути рецепт" x:Name="showBtn" Content="Переглянути" Click="showBtn_Click"/>
+                                                    <Button ToolTip="Натисніть, щоб видалити рецепт" x:Name="deleteBtn" Content="Delete" Click="deleteBtn_Click"/>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>

@@ -25,6 +25,7 @@ namespace wpf_test.admin
         private class MenuTable
         {
             public int menu_id { get; set; }
+            public string type { get; set; }
             public string name { get; set; }
             public int size { get; set; }
             public string units { get; set; }
@@ -65,6 +66,7 @@ namespace wpf_test.admin
                 select new MenuTable
                 {
                     menu_id = menu_item.id,
+                    type = type_item.type,
                     name = menu_item.dish_name,
                     size = menu_item.size,
                     units = unit_item.name,
@@ -83,11 +85,13 @@ namespace wpf_test.admin
         {
             MenuTable curDish = (MenuGrid.SelectedItem as MenuTable);
             Button btn = (Button)sender;
-            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте зміну ціни?");
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте зміни?");
             if (confWindow.ShowDialog() == true && btn.IsEnabled)
             {
                 menu curMenuItem = _db.getDishInfo(curDish.menu_id).Single();
                 curMenuItem.price = curDish.price;
+                curMenuItem.dish_name = curDish.name;
+                curMenuItem.size = curDish.size;
                 _db.SaveChanges();
                 MenuGrid.ItemsSource = GetItems(typeId);
                 MessageBox.Show("Зміни успішно збережено");
@@ -160,6 +164,12 @@ namespace wpf_test.admin
         private void upd()
         {
             UsersGrid.ItemsSource = _db.users.ToList();
+        }
+
+        private void AddRecipeBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            AddDish addRecipePage = new AddDish();
+            addRecipePage.ShowDialog();
         }
     }
 }

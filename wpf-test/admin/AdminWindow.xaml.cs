@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Data.Entity.Core;
 using wpf_test.Entity;
 using wpf_test.chef;
+using Restaurant;
+using Restaurant.Admin;
 
 namespace wpf_test.admin
 {
@@ -43,6 +45,9 @@ namespace wpf_test.admin
             MenuGrid.ItemsSource = menuList;
             fillIngrGrid();
             UsersGrid.ItemsSource = _db.users.ToList();
+            typesDishesGrid.ItemsSource = _db.type_dish.ToList();
+            statusesGrid.ItemsSource = _db.statuses.ToList();
+            waitersGrid.ItemsSource = _db.waiters.ToList();
         }
         void fillComboBox()
         {
@@ -95,8 +100,7 @@ namespace wpf_test.admin
                 _db.SaveChanges();
                 MenuGrid.ItemsSource = GetItems(typeId);
                 MessageBox.Show("Зміни успішно збережено");
-            }
-            else
+            } else
             {
                 confWindow.Hide();
             }
@@ -171,5 +175,157 @@ namespace wpf_test.admin
             AddDish addRecipePage = new AddDish();
             addRecipePage.ShowDialog();
         }
+        private void Close_Program(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
+            if (confWindow.ShowDialog() == true)
+            {
+                this.Close();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+
+        private void Change_User(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
+            if (confWindow.ShowDialog() == true)
+            {
+                LoginScreen login = new LoginScreen();
+                login.Show();
+                this.Close();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+
+        private void Help_Item(object sender, RoutedEventArgs e)
+        {
+            string Help = "1. Для перегляду списку типів страв, перейдіть у вкладку \"Тип страви\".\n" +
+                          "2. Для додавання нового типу страви, перейдіть у вкладку \"Тип страви\" та натисніть кнопку \"Додати тип страви\".\n" +
+                          "3. Для перегляду списку статусів, перейдіть у вкладку \"Статус\".\n" +
+                          "4. Для додавання нового статусу, перейдіть у вкладку \"Статус\" та натисніть кнопку \"Додати статус\".\n" +
+                          "5. Для перегляду списку офіціантів, перейдіть у вкладку \"Офіціанти\".\n" +
+                          "6. Для додавання нового офіціанта, перейдіть у вкладку \"Офіціанти\" та натисніть кнопку \"Додати офіціанта\".\n" +
+                          "7. Для видалення елементів із таблиці, натисніть кнопку \"Видалити\", яка розташована у рядку відповідного елемента.\n" +
+                          "8. Для редагування елементу, двічі натисніть на поле та після введення нового елементу, натисніть клавішу ENTER та " +
+                          "кнопку \"Зберегти\", яка розташована у рядку відповідного елемента.\n";
+            HelpProgram helpWindow = new HelpProgram(Help);
+            helpWindow.ShowDialog();
+        }
+        private void About_Item(object sender, RoutedEventArgs e)
+        {
+            AboutProgram window = new AboutProgram();
+            window.ShowDialog();
+        }
+        //type_dish add
+        private void AddTypeDish_Click(object sender, RoutedEventArgs e)
+        {
+            AddTypeDish dishWindow = new AddTypeDish();
+            dishWindow.ShowDialog();
+            typesDishesGrid.ItemsSource = _db.type_dish.ToList();
+        }
+        //type_dish delete
+        private void deleteTypeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення типу страви?");
+            if (confWindow.ShowDialog() == true)
+            {
+                int id = (typesDishesGrid.SelectedItem as type_dish).id;
+                var deleteTypeDish = _db.type_dish.Where(m => m.id == id).Single();
+                _db.type_dish.Remove(deleteTypeDish);
+                _db.SaveChanges();
+                typesDishesGrid.ItemsSource = _db.type_dish.ToList();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+        //type_dish update
+        private void updateTypeDishBtn_Click(object sender, RoutedEventArgs e)
+        {
+            type_dish type_dish = (typesDishesGrid.SelectedItem as type_dish);
+            type_dish thisTypeDish = _db.getTypeDishInfo(type_dish.id).Single();
+            thisTypeDish.type = type_dish.type;
+            _db.SaveChanges();
+            typesDishesGrid.ItemsSource = _db.type_dish.ToList();
+            MessageBox.Show("Зміни успішно збережено");
+        }
+
+        //status add
+        private void AddStatus_Click(object sender, RoutedEventArgs e)
+        {
+            AddStatus statusWindow = new AddStatus();
+            statusWindow.ShowDialog();
+            statusesGrid.ItemsSource = _db.statuses.ToList();
+        }
+        //status delete
+        private void deleteStatusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення статусу?");
+            if (confWindow.ShowDialog() == true)
+            {
+                int id = (statusesGrid.SelectedItem as statuses).id;
+                var deleteStatus = _db.statuses.Where(m => m.id == id).Single();
+                _db.statuses.Remove(deleteStatus);
+                _db.SaveChanges();
+                statusesGrid.ItemsSource = _db.statuses.ToList();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+        //status update
+        private void updateStatusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            statuses status = (statusesGrid.SelectedItem as statuses);
+            statuses thisStatus = _db.getStatusInfo(status.id).Single();
+            thisStatus.name = status.name;
+            _db.SaveChanges();
+            statusesGrid.ItemsSource = _db.statuses.ToList();
+            MessageBox.Show("Зміни успішно збережено");
+        }
+
+        //Waiter add
+        private void AddWaiterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddWaiter waiterWindow = new AddWaiter();
+            waiterWindow.ShowDialog();
+            waitersGrid.ItemsSource = _db.waiters.ToList();
+        }
+        //Waiter delete
+        private void deleteWaiterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення офіціанта?");
+            if (confWindow.ShowDialog() == true)
+            {
+                int id = (waitersGrid.SelectedItem as waiters).id;
+                var deleteWaiter = _db.waiters.Where(m => m.id == id).Single();
+                _db.waiters.Remove(deleteWaiter);
+                _db.SaveChanges();
+                waitersGrid.ItemsSource = _db.waiters.ToList();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+        //Waiter update
+        private void updateWaiterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            waiters waiter = (waitersGrid.SelectedItem as waiters);
+            waiters thisWaiter = _db.getWaiterInfo(waiter.id).Single();
+            thisWaiter.name = waiter.name;
+            _db.SaveChanges();
+            waitersGrid.ItemsSource = _db.waiters.ToList();
+            MessageBox.Show("Зміни успішно збережено");
+        }
     }
+
 }

@@ -179,5 +179,11 @@
     <FunctionImportMapping FunctionImportName="getCurrentDish" FunctionName="ProjectRestaurantModel.Store.getCurrentDish" />
     <FunctionImportMapping FunctionImportName="getDishInfo" FunctionName="ProjectRestaurantModel.Store.getDishInfo" />
     <FunctionImportMapping FunctionImportName="getUserInfo" FunctionName="ProjectRestaurantModel.Store.getUserInfo" />
+    <FunctionImportMapping FunctionImportName="getPlatenInfo" FunctionName="ProjectRestaurantModel.Store.getPlatenInfo" />
+    <FunctionImportMapping FunctionImportName="getProviderInfo" FunctionName="ProjectRestaurantModel.Store.getProviderInfo" />
+    <FunctionImportMapping FunctionImportName="getStatusInfo" FunctionName="ProjectRestaurantModel.Store.getStatusInfo" />
+    <FunctionImportMapping FunctionImportName="getStorageItemInfo" FunctionName="ProjectRestaurantModel.Store.getStorageItemInfo" />
+    <FunctionImportMapping FunctionImportName="getTypeDishInfo" FunctionName="ProjectRestaurantModel.Store.getTypeDishInfo" />
+    <FunctionImportMapping FunctionImportName="getWaiterInfo" FunctionName="ProjectRestaurantModel.Store.getWaiterInfo" />
   </EntityContainerMapping>
 </Mapping>

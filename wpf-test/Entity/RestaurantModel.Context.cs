@@ -138,5 +138,113 @@ namespace wpf_test.Entity
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<users>("getUserInfo", mergeOption, userIdParameter);
         }
+    
+        public virtual ObjectResult<platens> getPlatenInfo(Nullable<int> platenId)
+        {
+            var platenIdParameter = platenId.HasValue ?
+                new ObjectParameter("platenId", platenId) :
+                new ObjectParameter("platenId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<platens>("getPlatenInfo", platenIdParameter);
+        }
+    
+        public virtual ObjectResult<platens> getPlatenInfo(Nullable<int> platenId, MergeOption mergeOption)
+        {
+            var platenIdParameter = platenId.HasValue ?
+                new ObjectParameter("platenId", platenId) :
+                new ObjectParameter("platenId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<platens>("getPlatenInfo", mergeOption, platenIdParameter);
+        }
+    
+        public virtual ObjectResult<providers> getProviderInfo(Nullable<int> providerId)
+        {
+            var providerIdParameter = providerId.HasValue ?
+                new ObjectParameter("providerId", providerId) :
+                new ObjectParameter("providerId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<providers>("getProviderInfo", providerIdParameter);
+        }
+    
+        public virtual ObjectResult<providers> getProviderInfo(Nullable<int> providerId, MergeOption mergeOption)
+        {
+            var providerIdParameter = providerId.HasValue ?
+                new ObjectParameter("providerId", providerId) :
+                new ObjectParameter("providerId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<providers>("getProviderInfo", mergeOption, providerIdParameter);
+        }
+    
+        public virtual ObjectResult<statuses> getStatusInfo(Nullable<int> statusId)
+        {
+            var statusIdParameter = statusId.HasValue ?
+                new ObjectParameter("statusId", statusId) :
+                new ObjectParameter("statusId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<statuses>("getStatusInfo", statusIdParameter);
+        }
+    
+        public virtual ObjectResult<statuses> getStatusInfo(Nullable<int> statusId, MergeOption mergeOption)
+        {
+            var statusIdParameter = statusId.HasValue ?
+                new ObjectParameter("statusId", statusId) :
+                new ObjectParameter("statusId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<statuses>("getStatusInfo", mergeOption, statusIdParameter);
+        }
+    
+        public virtual ObjectResult<storage_ingredient> getStorageItemInfo(Nullable<int> storageItemId)
+        {
+            var storageItemIdParameter = storageItemId.HasValue ?
+                new ObjectParameter("storageItemId", storageItemId) :
+                new ObjectParameter("storageItemId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<storage_ingredient>("getStorageItemInfo", storageItemIdParameter);
+        }
+    
+        public virtual ObjectResult<storage_ingredient> getStorageItemInfo(Nullable<int> storageItemId, MergeOption mergeOption)
+        {
+            var storageItemIdParameter = storageItemId.HasValue ?
+                new ObjectParameter("storageItemId", storageItemId) :
+                new ObjectParameter("storageItemId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<storage_ingredient>("getStorageItemInfo", mergeOption, storageItemIdParameter);
+        }
+    
+        public virtual ObjectResult<type_dish> getTypeDishInfo(Nullable<int> typedishId)
+        {
+            var typedishIdParameter = typedishId.HasValue ?
+                new ObjectParameter("typedishId", typedishId) :
+                new ObjectParameter("typedishId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<type_dish>("getTypeDishInfo", typedishIdParameter);
+        }
+    
+        public virtual ObjectResult<type_dish> getTypeDishInfo(Nullable<int> typedishId, MergeOption mergeOption)
+        {
+            var typedishIdParameter = typedishId.HasValue ?
+                new ObjectParameter("typedishId", typedishId) :
+                new ObjectParameter("typedishId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<type_dish>("getTypeDishInfo", mergeOption, typedishIdParameter);
+        }
+    
+        public virtual ObjectResult<waiters> getWaiterInfo(Nullable<int> waiterId)
+        {
+            var waiterIdParameter = waiterId.HasValue ?
+                new ObjectParameter("waiterId", waiterId) :
+                new ObjectParameter("waiterId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<waiters>("getWaiterInfo", waiterIdParameter);
+        }
+    
+        public virtual ObjectResult<waiters> getWaiterInfo(Nullable<int> waiterId, MergeOption mergeOption)
+        {
+            var waiterIdParameter = waiterId.HasValue ?
+                new ObjectParameter("waiterId", waiterId) :
+                new ObjectParameter("waiterId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<waiters>("getWaiterInfo", mergeOption, waiterIdParameter);
+        }
     }
 }

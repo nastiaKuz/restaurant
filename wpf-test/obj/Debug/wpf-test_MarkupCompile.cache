@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\nastia\Desktop\c#\wpf-test\wpf-test\App.xaml
-12-347765269
+251678424963
 2-1018401203
-421459797834
+61748826735
 181657050735
-accountant\AccountantWindow.xaml;admin\AddIngredient.xaml;admin\AdminWindow.xaml;admin\EditUser.xaml;chef\ChefWindow.xaml;chef\AddDish.xaml;chef\ConfirmReadiness.xaml;chef\EditRecipe.xaml;chef\IngredientsList.xaml;chef\ShowRecipe.xaml;LoginScreen.xaml;MainWindow.xaml;
+AboutProgram.xaml;accountant\AccountantWindow.xaml;accountant\ProviderReport.xaml;accountant\Report.xaml;admin\AddIngredient.xaml;admin\AddStatus.xaml;admin\AddTypeDish.xaml;admin\AddWaiter.xaml;admin\AdminWindow.xaml;admin\EditUser.xaml;chef\ChefWindow.xaml;chef\AddDish.xaml;chef\ConfirmReadiness.xaml;chef\EditRecipe.xaml;chef\IngredientsList.xaml;chef\ShowRecipe.xaml;HelpProgram.xaml;LoginScreen.xaml;MainWindow.xaml;Provider\AddOrderIngredient.xaml;Provider\AddProvider.xaml;Provider\AddStorageItem.xaml;Provider\ProviderWindow.xaml;Waiter\AddPlaten.xaml;Waiter\WaiterWindow.xaml;
 
 False
 

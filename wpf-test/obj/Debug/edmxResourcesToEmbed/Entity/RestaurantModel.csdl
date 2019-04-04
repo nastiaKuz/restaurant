@@ -544,6 +544,24 @@
     <FunctionImport Name="getUserInfo" EntitySet="users" ReturnType="Collection(ProjectRestaurantModel.users)">
       <Parameter Name="userId" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="getPlatenInfo" EntitySet="platens" ReturnType="Collection(ProjectRestaurantModel.platens)">
+      <Parameter Name="platenId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getProviderInfo" EntitySet="providers" ReturnType="Collection(ProjectRestaurantModel.providers)">
+      <Parameter Name="providerId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getStatusInfo" EntitySet="statuses" ReturnType="Collection(ProjectRestaurantModel.statuses)">
+      <Parameter Name="statusId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getStorageItemInfo" EntitySet="storage_ingredient" ReturnType="Collection(ProjectRestaurantModel.storage_ingredient)">
+      <Parameter Name="storageItemId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getTypeDishInfo" EntitySet="type_dish" ReturnType="Collection(ProjectRestaurantModel.type_dish)">
+      <Parameter Name="typedishId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getWaiterInfo" EntitySet="waiters" ReturnType="Collection(ProjectRestaurantModel.waiters)">
+      <Parameter Name="waiterId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getIngredients_Result">
     <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
@@ -582,5 +600,32 @@
     <Property Type="Int32" Name="id" Nullable="false" />
     <Property Type="String" Name="login" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="password" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getPlatenInfo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="number" Nullable="false" />
+    <Property Type="Int32" Name="people_amount" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="getProviderInfo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getStatusInfo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getStorageItemInfo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="count" Nullable="false" />
+    <Property Type="Int32" Name="unit_of_measurement_id" Nullable="true" />
+    <Property Type="Int32" Name="ingredient_id" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getTypeDishInfo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="type" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getWaiterInfo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
   </ComplexType>
 </Schema>

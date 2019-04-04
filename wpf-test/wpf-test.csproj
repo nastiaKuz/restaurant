@@ -66,11 +66,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutProgram.xaml.cs">
+      <DependentUpon>AboutProgram.xaml</DependentUpon>
+    </Compile>
     <Compile Include="accountant\AccountantWindow.xaml.cs">
       <DependentUpon>AccountantWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="accountant\ProviderReport.xaml.cs">
+      <DependentUpon>ProviderReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="accountant\Report.xaml.cs">
+      <DependentUpon>Report.xaml</DependentUpon>
+    </Compile>
     <Compile Include="admin\AddIngredient.xaml.cs">
       <DependentUpon>AddIngredient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AddStatus.xaml.cs">
+      <DependentUpon>AddStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AddTypeDish.xaml.cs">
+      <DependentUpon>AddTypeDish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AddWaiter.xaml.cs">
+      <DependentUpon>AddWaiter.xaml</DependentUpon>
     </Compile>
     <Compile Include="admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
@@ -114,10 +132,28 @@
     <Compile Include="Entity\getIngredients_Result.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\getPlatenInfo_Result.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\getProviderInfo_Result.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\getStatusInfo_Result.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\getStorageItemInfo_Result.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\getStorageState_Result.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\getTypeDishInfo_Result.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\getUserInfo_Result.cs">
+      <DependentUpon>RestaurantModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\getWaiterInfo_Result.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\ingredients.cs">
@@ -180,16 +216,61 @@
     <Compile Include="Entity\waiters.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="HelpProgram.xaml.cs">
+      <DependentUpon>HelpProgram.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Provider\AddOrderIngredient.xaml.cs">
+      <DependentUpon>AddOrderIngredient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Provider\AddProvider.xaml.cs">
+      <DependentUpon>AddProvider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Provider\AddStorageItem.xaml.cs">
+      <DependentUpon>AddStorageItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Provider\ProviderWindow.xaml.cs">
+      <DependentUpon>ProviderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Waiter\AddPlaten.xaml.cs">
+      <DependentUpon>AddPlaten.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Waiter\WaiterWindow.xaml.cs">
+      <DependentUpon>WaiterWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AboutProgram.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="accountant\AccountantWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="accountant\ProviderReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="accountant\Report.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="admin\AddIngredient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="admin\AddStatus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="admin\AddTypeDish.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="admin\AddWaiter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="admin\AdminWindow.xaml">
       <SubType>Designer</SubType>
@@ -223,6 +304,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="HelpProgram.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="LoginScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -239,6 +324,30 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Provider\AddOrderIngredient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Provider\AddProvider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Provider\AddStorageItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Provider\ProviderWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Waiter\AddPlaten.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Waiter\WaiterWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

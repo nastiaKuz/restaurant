@@ -200,7 +200,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__order_ing__provi__239E4DCF">
+        <Association Name="FK__order_ing__provi__06CD04F7">
           <End Role="providers" Type="Self.providers" Multiplicity="0..1" />
           <End Role="order_ingredients" Type="Self.order_ingredients" Multiplicity="*" />
           <ReferentialConstraint>
@@ -212,7 +212,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__order_ing__statu__24927208">
+        <Association Name="FK__order_ing__statu__07C12930">
           <End Role="statuses" Type="Self.statuses" Multiplicity="0..1" />
           <End Role="order_ingredients" Type="Self.order_ingredients" Multiplicity="*" />
           <ReferentialConstraint>
@@ -224,8 +224,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__status_i__108B795B">
-          <End Role="statuses" Type="Self.statuses" Multiplicity="0..1" />
+        <Association Name="FK__orders__status_i__74AE54BC">
+          <End Role="statuses" Type="Self.statuses" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="orders" Type="Self.orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="statuses">
@@ -236,7 +238,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__table_id__117F9D94">
+        <Association Name="FK__orders__table_id__01142BA1">
           <End Role="platens" Type="Self.platens" Multiplicity="0..1" />
           <End Role="orders" Type="Self.orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -248,8 +250,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__waiter_i__1273C1CD">
+        <Association Name="FK__orders__table_id__75A278F5">
+          <End Role="platens" Type="Self.platens" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="platens">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="table_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orders__waiter_i__02084FDA">
           <End Role="waiters" Type="Self.waiters" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="waiters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="waiter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orders__waiter_i__76969D2E">
+          <End Role="waiters" Type="Self.waiters" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="orders" Type="Self.orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="waiters">
@@ -337,7 +367,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_menu">
-          <End Role="menu" Type="Self.menu" Multiplicity="1" />
+          <End Role="menu" Type="Self.menu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="checks" Type="Self.checks" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="menu">
@@ -375,7 +407,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_orders">
-          <End Role="orders" Type="Self.orders" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="checks" Type="Self.checks" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="orders">
@@ -411,11 +445,29 @@
           <Parameter Name="dish_name" Type="nvarchar" Mode="In" />
           <Parameter Name="dish_count" Type="int" Mode="In" />
         </Function>
+        <Function Name="getPlatenInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="platenId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getProviderInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="providerId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getStatusInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="statusId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getStorageItemInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="storageItemId" Type="int" Mode="In" />
+        </Function>
         <Function Name="getStorageState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ingr_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="getTypeDishInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="typedishId" Type="int" Mode="In" />
+        </Function>
         <Function Name="getUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getWaiterInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="waiterId" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="ProjectRestaurantModelStoreContainer">
           <EntitySet Name="checks" EntityType="Self.checks" Schema="dbo" store:Type="Tables" />
@@ -451,23 +503,31 @@
             <End Role="type_dish" EntitySet="type_dish" />
             <End Role="menu" EntitySet="menu" />
           </AssociationSet>
-          <AssociationSet Name="FK__order_ing__provi__239E4DCF" Association="Self.FK__order_ing__provi__239E4DCF">
+          <AssociationSet Name="FK__order_ing__provi__06CD04F7" Association="Self.FK__order_ing__provi__06CD04F7">
             <End Role="providers" EntitySet="providers" />
             <End Role="order_ingredients" EntitySet="order_ingredients" />
           </AssociationSet>
-          <AssociationSet Name="FK__order_ing__statu__24927208" Association="Self.FK__order_ing__statu__24927208">
+          <AssociationSet Name="FK__order_ing__statu__07C12930" Association="Self.FK__order_ing__statu__07C12930">
             <End Role="statuses" EntitySet="statuses" />
             <End Role="order_ingredients" EntitySet="order_ingredients" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__status_i__108B795B" Association="Self.FK__orders__status_i__108B795B">
+          <AssociationSet Name="FK__orders__status_i__74AE54BC" Association="Self.FK__orders__status_i__74AE54BC">
             <End Role="statuses" EntitySet="statuses" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__table_id__117F9D94" Association="Self.FK__orders__table_id__117F9D94">
+          <AssociationSet Name="FK__orders__table_id__01142BA1" Association="Self.FK__orders__table_id__01142BA1">
             <End Role="platens" EntitySet="platens" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__waiter_i__1273C1CD" Association="Self.FK__orders__waiter_i__1273C1CD">
+          <AssociationSet Name="FK__orders__table_id__75A278F5" Association="Self.FK__orders__table_id__75A278F5">
+            <End Role="platens" EntitySet="platens" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orders__waiter_i__02084FDA" Association="Self.FK__orders__waiter_i__02084FDA">
+            <End Role="waiters" EntitySet="waiters" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orders__waiter_i__76969D2E" Association="Self.FK__orders__waiter_i__76969D2E">
             <End Role="waiters" EntitySet="waiters" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
@@ -1062,7 +1122,25 @@
           <Parameter Name="dishId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getUserInfo" EntitySet="users" ReturnType="Collection(ProjectRestaurantModel.users)">
-            <Parameter Name="userId" Mode="In" Type="Int32" />
+          <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getPlatenInfo" EntitySet="platens" ReturnType="Collection(ProjectRestaurantModel.platens)">
+            <Parameter Name="platenId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getProviderInfo" EntitySet="providers" ReturnType="Collection(ProjectRestaurantModel.providers)">
+            <Parameter Name="providerId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getStatusInfo" EntitySet="statuses" ReturnType="Collection(ProjectRestaurantModel.statuses)">
+            <Parameter Name="statusId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getStorageItemInfo" EntitySet="storage_ingredient" ReturnType="Collection(ProjectRestaurantModel.storage_ingredient)">
+            <Parameter Name="storageItemId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getTypeDishInfo" EntitySet="type_dish" ReturnType="Collection(ProjectRestaurantModel.type_dish)">
+            <Parameter Name="typedishId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getWaiterInfo" EntitySet="waiters" ReturnType="Collection(ProjectRestaurantModel.waiters)">
+            <Parameter Name="waiterId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getIngredients_Result">
@@ -1102,6 +1180,33 @@
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="login" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="password" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getPlatenInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="number" Nullable="false" />
+          <Property Type="Int32" Name="people_amount" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getProviderInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getStatusInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getStorageItemInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="count" Nullable="false" />
+          <Property Type="Int32" Name="unit_of_measurement_id" Nullable="true" />
+          <Property Type="Int32" Name="ingredient_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getTypeDishInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="type" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getWaiterInfo_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1290,6 +1395,18 @@
           <FunctionImportMapping FunctionImportName="getDishInfo" FunctionName="ProjectRestaurantModel.Store.getDishInfo">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="getUserInfo" FunctionName="ProjectRestaurantModel.Store.getUserInfo">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getPlatenInfo" FunctionName="ProjectRestaurantModel.Store.getPlatenInfo">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getProviderInfo" FunctionName="ProjectRestaurantModel.Store.getProviderInfo">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getStatusInfo" FunctionName="ProjectRestaurantModel.Store.getStatusInfo">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getStorageItemInfo" FunctionName="ProjectRestaurantModel.Store.getStorageItemInfo">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getTypeDishInfo" FunctionName="ProjectRestaurantModel.Store.getTypeDishInfo">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getWaiterInfo" FunctionName="ProjectRestaurantModel.Store.getWaiterInfo">
           </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.Entity.Core;
 using wpf_test.Entity;
+using Restaurant;
 
 namespace wpf_test.chef
 {
@@ -247,6 +248,53 @@ namespace wpf_test.chef
             {
                 confWindow.Hide();
             }
+        }
+        private void Close_Program(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
+            if (confWindow.ShowDialog() == true)
+            {
+                this.Close();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+
+        private void Change_User(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
+            if (confWindow.ShowDialog() == true)
+            {
+                LoginScreen login = new LoginScreen();
+                login.Show();
+                this.Close();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+
+        private void Help_Item(object sender, RoutedEventArgs e)
+        {
+            string Help = "1. Для перегляду списку типів страв, перейдіть у вкладку \"Тип страви\".\n" +
+                          "2. Для додавання нового типу страви, перейдіть у вкладку \"Тип страви\" та натисніть кнопку \"Додати тип страви\".\n" +
+                          "3. Для перегляду списку статусів, перейдіть у вкладку \"Статус\".\n" +
+                          "4. Для додавання нового статусу, перейдіть у вкладку \"Статус\" та натисніть кнопку \"Додати статус\".\n" +
+                          "5. Для перегляду списку офіціантів, перейдіть у вкладку \"Офіціанти\".\n" +
+                          "6. Для додавання нового офіціанта, перейдіть у вкладку \"Офіціанти\" та натисніть кнопку \"Додати офіціанта\".\n" +
+                          "7. Для видалення елементів із таблиці, натисніть кнопку \"Видалити\", яка розташована у рядку відповідного елемента.\n" +
+                          "8. Для редагування елементу, двічі натисніть на поле та після введення нового елементу, натисніть клавішу ENTER та " +
+                          "кнопку \"Зберегти\", яка розташована у рядку відповідного елемента.\n";
+            HelpProgram helpWindow = new HelpProgram(Help);
+            helpWindow.ShowDialog();
+        }
+        private void About_Item(object sender, RoutedEventArgs e)
+        {
+            AboutProgram window = new AboutProgram();
+            window.ShowDialog();
         }
     }
 }

@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="25fe04df036d4bdbb7d3c8e06b5654f4" Name="Diagram1">
-        <EntityTypeShape EntityType="ProjectRestaurantModel.checks" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.content_order_ingredients" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.cooking" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.ingredients" Width="1.5" PointX="6" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.menu" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.order_ingredients" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.orders" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.platens" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.providers" Width="1.5" PointX="3.75" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.recipes" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.shipment" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.statuses" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.storage_ingredient" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.type_dish" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.units_of_measurement" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.users" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectRestaurantModel.waiters" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+      <Diagram DiagramId="25fe04df036d4bdbb7d3c8e06b5654f4" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="ProjectRestaurantModel.checks" Width="1.5" PointX="8.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.content_order_ingredients" Width="1.5" PointX="12.625" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.cooking" Width="1.5" PointX="5.625" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.ingredients" Width="1.5" PointX="15.875" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.menu" Width="1.5" PointX="3.375" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.order_ingredients" Width="1.5" PointX="7.875" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.orders" Width="1.5" PointX="6" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.platens" Width="1.5" PointX="2.875" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.providers" Width="1.5" PointX="13.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.recipes" Width="1.5" PointX="16.625" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.shipment" Width="1.5" PointX="14" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.statuses" Width="1.5" PointX="0.625" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.storage_ingredient" Width="1.5" PointX="10.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.type_dish" Width="1.5" PointX="0.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.units_of_measurement" Width="1.5" PointX="16.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.users" Width="1.5" PointX="11.375" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectRestaurantModel.waiters" Width="1.5" PointX="0.625" PointY="4.125" IsExpanded="true" />
         <AssociationConnector Association="ProjectRestaurantModel.FK__cooking__check_i__48CFD27E" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectRestaurantModel.FK_menu" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectRestaurantModel.FK_orders" ManuallyRouted="false" />

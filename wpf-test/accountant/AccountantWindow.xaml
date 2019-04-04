@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.accountant"
         mc:Ignorable="d"
-        Title="AccountantWindow" Height="533.034" Width="1101.104">
+        Title="AccountantWindow" Height="554.034" Width="1101.104">
     <Grid HorizontalAlignment="Left" Width="1066">
-        <TabControl x:Name="ChefMenu" Margin="10,20,-12,10" HorizontalAlignment="Left" Width="1068">
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TabControl FontFamily="Corbel" x:Name="ChefMenu" Margin="2,29,-14,11" HorizontalAlignment="Left" Width="1078">
             <TabItem x:Name="orderChecksTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -42,6 +48,7 @@
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                                 <Button ToolTip="Натисніть, щоб видалити" x:Name="deleteBtn" Content="Видалити" Click="deleteBtn_Click"/>
+                                                <Button ToolTip="Натисніть, щоб сформувати звіт" x:Name="createReportBtn" Content="Переглянути звіт" Click="createReportBtn_Click"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -70,15 +77,15 @@
                         <DatePicker Name="datePicker2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,-88,0,0" SelectedDateChanged="datePicker2_SelectedDateChanged" IsTodayHighlighted="True"/>-->
                         <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="3,-84,0,0" TextWrapping="Wrap" Text="Оберіть провайдера" VerticalAlignment="Top" Width="135" Height="23" RenderTransformOrigin="2.717,0.739"/>
                         <ComboBox x:Name="providerComboBox" HorizontalAlignment="Left" Margin="138,-89,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id, Mode=OneTime}" SelectionChanged="providerComboBoxComboBox_SelectionChanged" Height="25"/>
-                        <DataGrid x:Name="providersOrderGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,-50,0,62" Grid.ColumnSpan="2">
+                        <DataGrid x:Name="providersOrderGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,-50,0,23" Grid.ColumnSpan="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Дата" Binding="{Binding time}"/>
                                 <DataGridTextColumn Header="Інгредієнт" Binding="{Binding ingredient}"/>
                                 <DataGridTextColumn Width="70" Header="Кількість" Binding="{Binding ingr_count}"/>
                                 <DataGridTextColumn Header="Одиниці вимірювання" Binding="{Binding units}"/>
                                 <DataGridTextColumn Header="Провайдер" Binding="{Binding provider}"/>
-                                <DataGridTextColumn Header="Статус" Binding="{Binding status}"/>
-                                <DataGridTextColumn Header="Ціна, грн" Binding="{Binding price}"/>
+                                <DataGridTextColumn Width="100" Header="Статус" Binding="{Binding status}"/>
+                                <DataGridTextColumn Width="80" Header="Ціна, грн" Binding="{Binding price}"/>
                                 <DataGridTemplateColumn>
                                     <DataGridTemplateColumn.HeaderTemplate>
                                         <DataTemplate>
@@ -89,6 +96,7 @@
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                                 <Button ToolTip="Натисніть, щоб видалити" x:Name="deleteProviderOrderBtn" Content="Видалити" Click="deleteProviderOrderBtn_Click"/>
+                                                <Button ToolTip="Натисніть, щоб сформувати звіт" x:Name="createProviderReportBtn" Content="Переглянути звіт" Click="createProviderReportBtn_Click"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -101,5 +109,6 @@
                 </TabItem.Content>
             </TabItem>
         </TabControl>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1078" Margin="10,2,-22,0" Background="{x:Null}"/>
     </Grid>
 </Window>

@@ -1,0 +1,136 @@
+﻿<Window x:Class="Restaurant.Provider.ProviderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant.Provider"
+        mc:Ignorable="d"
+        Title="Вікно менеджера по закупках" Height="585" Width="1024.477">
+    <Grid>
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TabControl FontFamily="Corbel" FontSize="14" x:Name="ProviderMenu" Margin="10,35,-2,10" HorizontalAlignment="Left" Width="1008">
+            <TabItem x:Name="storageTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="CornflowerBlue"/>
+                        <TextBlock Margin="3"><Run Text="Склад"/></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Margin="0,57,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="AddStorageItemBtn" Margin="0,-49,772,422" Content="Додати новий товар на склад" Click="AddStorageItemBtn_Click"/>
+                    <DataGrid x:Name="StorageGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Інгредієнт" Binding="{Binding ingredient_name}"/>
+                            <DataGridTextColumn Header="Одиниці вимірювання" Binding="{Binding unit_measurement}"/>
+                            <DataGridTextColumn Width="70" Header="Кількість" Binding="{Binding count}">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style>
+                                        <Setter Property="ToolTipService.ToolTip" Value="Для редагування натисність двічі"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="Дії"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateStorageBtn" Content="Зберегти" Click="updateStorageBtn_Click"/>
+                                            <Button Margin="50,0,0,0" ToolTip="Натисніть, щоб видалити товар" x:Name="deleteStorageBtn" Content="Видалити" Click="deleteStorageBtn_Click"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="providersTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="MediumSeaGreen" />
+                        <TextBlock Margin="3"><Run Text="Постачальники"/></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Margin="0,57,0,0">
+                    <Button x:Name="AddProviderBtn" Margin="0,-49,772,422" Content="Додати постачальника" Click="AddProviderBtn_Click"/>
+                    <DataGrid x:Name="ProvidersGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Постачальник" Binding="{Binding name}"/>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="Дії"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Width="190" Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateProviderBtn" Content="Зберегти" Click="updateProviderBtn_Click"/>
+                                            <Button Margin="50,0,0,0" ToolTip="Натисніть, щоб видалити постачальника" x:Name="deleteProviderBtn" Content="Видалити" Click="deleteProviderBtn_Click"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="orderIngredientsTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="BlueViolet" />
+                        <TextBlock Margin="3"><Run Text="Замовлення інгредієнтів"/></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Margin="0,57,0,0">
+                    <Button x:Name="AddOrderIngr" Margin="0,-49,773,422" Content="Замовити" Click="AddOrderIngr_Click" />
+                    <DataGrid x:Name="ordIngrGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="100" Header="Постачальник" Binding="{Binding provid_name}"/>
+                            <DataGridTextColumn Header="Інгредієнт" Binding="{Binding ingr_name}"/>
+                            <DataGridTextColumn Header="Кількість" Binding="{Binding count}"/>
+                            <DataGridTextColumn Width="140" Header="Одиниці вимірювання" Binding="{Binding units}"/>
+                            <DataGridTextColumn Width="60" Header="Ціна" Binding="{Binding price}"/>
+                            <DataGridTextColumn Header="Статус" Binding="{Binding status}"/>
+                            <DataGridTextColumn Width="145" Header="Відправлення" Binding="{Binding d1}"/>
+                            <DataGridTextColumn Width="145" Header="Прибуття" Binding="{Binding d2}">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style>
+                                        <Setter Property="ToolTipService.ToolTip" Value="Для редагування натисність двічі"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTemplateColumn Width="140">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="Дії"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateOrderIngredientsBtn" Content="Зберегти" Click="updateOrderIngredientsBtn_Click"/>
+                                            <Button Margin="10,0,0,0" ToolTip="Натисніть, щоб видалити замовлення" x:Name="deleteOrderIngredientsBtn" Content="Видалити" Click="deleteOrderIngredientsBtn_Click"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

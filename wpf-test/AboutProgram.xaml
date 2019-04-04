@@ -1,0 +1,20 @@
+﻿<Window x:Class="Restaurant.AboutProgram"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant"
+        mc:Ignorable="d"
+        Title="Про програму" Height="309" Width="368">
+    <Grid>
+        <RichTextBox BorderBrush="Black" BorderThickness="0" FontFamily="Corbel" FontSize="16" Name ="textbox" HorizontalAlignment="Left" Height="202" VerticalAlignment="Top" Width="340" Margin="10,27,0,0">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button FontFamily="Corbel" FontSize="14" Content="Ok" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
+
+    </Grid>
+</Window>

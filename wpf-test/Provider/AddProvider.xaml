@@ -1,0 +1,21 @@
+﻿<Window x:Class="Restaurant.Provider.AddProvider"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant.Provider"
+        mc:Ignorable="d"
+        Title="Добавити нового постачальника" Height="252" Width="615.517">
+    <Grid>
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TextBlock FontFamily="Corbel" x:Name="textBlock" HorizontalAlignment="Center" Margin="272,45,204,0" TextWrapping="Wrap" Text=" Постачальник" VerticalAlignment="Top" FontSize="20" Width="132"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="recipeNameToAdd" HorizontalAlignment="Left" Margin="167,88,0,0" TextWrapping="Wrap" Text="Назва" VerticalAlignment="Top"/>
+        <Button FontFamily="Corbel" FontSize="14" x:Name="addProviderBtn" Content="Додати" HorizontalAlignment="Left" Margin="271,132,0,0" VerticalAlignment="Top" Width="123" Height="22" Click="AddProviderBtn_Click"/>
+        <TextBox FontFamily="Corbel" FontSize="14" x:Name="ProviderNameTextBox" HorizontalAlignment="Left" Height="22" Margin="223,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
+    </Grid>
+</Window>

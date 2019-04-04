@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data.Entity.Core;
 using wpf_test.Entity;
 using wpf_test.chef;
+using Restaurant;
 
 namespace wpf_test.accountant
 {
@@ -30,6 +31,7 @@ namespace wpf_test.accountant
             public int dish_count { get; set; }
             public int price { get; set; }
             public int check_id { get; set; }
+            public int? table { get; set; }
         }
         private class providersOrder
         {
@@ -71,8 +73,8 @@ namespace wpf_test.accountant
                 join menu_item in _db.menu on check_item.menu_id equals menu_item.id
                 join order_item in _db.orders on check_item.order_id equals order_item.id
                 join waiter_item in _db.waiters on order_item.waiter_id equals waiter_item.id
-                //where order_item.time.ToString() == date.ToString().Substring(0, 10)
-                select new orderCheck
+                          where order_item.time.ToString() == date.ToString().Substring(0, 10)
+                          select new orderCheck
                 {
                     time = order_item.time,
                     waiter = waiter_item.name,
@@ -80,6 +82,7 @@ namespace wpf_test.accountant
                     dish_count = check_item.count,
                     price = menu_item.price,
                     check_id = check_item.id,
+                    table = order_item.table_id
                 }).ToList();
             return result;
         }
@@ -91,7 +94,7 @@ namespace wpf_test.accountant
                 join order_ingr_item in _db.order_ingredients on content_item.order_ingredients_id equals order_ingr_item.id
                 join provider_item in _db.providers on order_ingr_item.provider_id equals provider_item.id
                 join status_item in _db.statuses on order_ingr_item.status_id equals status_item.id
-                          where order_ingr_item.order_time.ToString().Substring(3, 2) == date.ToString().Substring(3, 2)
+                          //where order_ingr_item.order_time.ToString().Substring(3, 2) == date.ToString().Substring(3, 2)
                           select new providersOrder()
                 {
                     content_id = content_item.id,
@@ -192,6 +195,20 @@ namespace wpf_test.accountant
                 confWindow.Hide();
             }
         }
+
+        private void createReportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            orderCheck curItem = orderChecksGrid.SelectedItem as orderCheck;
+            Report report = new Report(curItem.waiter, curItem.table, curItem.dish_name, curItem.price);
+            report.ShowDialog();
+        }
+
+        private void createProviderReportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            providersOrder curItem = providersOrderGrid.SelectedItem as providersOrder;
+            ProviderReport report = new ProviderReport(curItem.provider, curItem.ingredient, curItem.ingr_count, curItem.units, curItem.price);
+            report.ShowDialog();
+        }
         private void providerComboBoxComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             providerId = Convert.ToInt32(providerComboBox.SelectedValue);
@@ -212,6 +229,53 @@ namespace wpf_test.accountant
             {
                 confWindow.Hide();
             }
+        }
+        private void Close_Program(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
+            if (confWindow.ShowDialog() == true)
+            {
+                this.Close();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+
+        private void Change_User(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви впевнені, що хочете вийти?");
+            if (confWindow.ShowDialog() == true)
+            {
+                LoginScreen login = new LoginScreen();
+                login.Show();
+                this.Close();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
+        }
+
+        private void Help_Item(object sender, RoutedEventArgs e)
+        {
+            string Help = "1. Для перегляду списку типів страв, перейдіть у вкладку \"Тип страви\".\n" +
+                          "2. Для додавання нового типу страви, перейдіть у вкладку \"Тип страви\" та натисніть кнопку \"Додати тип страви\".\n" +
+                          "3. Для перегляду списку статусів, перейдіть у вкладку \"Статус\".\n" +
+                          "4. Для додавання нового статусу, перейдіть у вкладку \"Статус\" та натисніть кнопку \"Додати статус\".\n" +
+                          "5. Для перегляду списку офіціантів, перейдіть у вкладку \"Офіціанти\".\n" +
+                          "6. Для додавання нового офіціанта, перейдіть у вкладку \"Офіціанти\" та натисніть кнопку \"Додати офіціанта\".\n" +
+                          "7. Для видалення елементів із таблиці, натисніть кнопку \"Видалити\", яка розташована у рядку відповідного елемента.\n" +
+                          "8. Для редагування елементу, двічі натисніть на поле та після введення нового елементу, натисніть клавішу ENTER та " +
+                          "кнопку \"Зберегти\", яка розташована у рядку відповідного елемента.\n";
+            HelpProgram helpWindow = new HelpProgram(Help);
+            helpWindow.ShowDialog();
+        }
+        private void About_Item(object sender, RoutedEventArgs e)
+        {
+            AboutProgram window = new AboutProgram();
+            window.ShowDialog();
         }
     }
 }

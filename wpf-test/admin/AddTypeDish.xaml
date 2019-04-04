@@ -1,0 +1,21 @@
+﻿<Window x:Class="Restaurant.Admin.AddTypeDish"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant.Admin"
+        mc:Ignorable="d"
+        Title="Добавити тип страви" Height="252" Width="615">
+    <Grid Margin="0,0,2,17">
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TextBlock FontFamily="Corbel" x:Name="textBlock" HorizontalAlignment="Center" Margin="254,43,229,0" TextWrapping="Wrap" Text=" Тип страви" VerticalAlignment="Top" FontSize="20" Width="122"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="typeDishToAdd" HorizontalAlignment="Left" Margin="176,87,0,0" TextWrapping="Wrap" Text="Тип" VerticalAlignment="Top"/>
+        <Button FontFamily="Corbel" FontSize="14" x:Name="addTypeDishBtn" Content="Додати" HorizontalAlignment="Left" Margin="278,139,0,0" VerticalAlignment="Top" Width="59" Height="22" Click="AddTypeDishBtn_Click"/>
+        <TextBox FontFamily="Corbel" FontSize="14" x:Name="typeDishTextBox" HorizontalAlignment="Left" Height="22" Margin="222,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
+    </Grid>
+</Window>

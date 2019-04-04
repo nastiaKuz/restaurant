@@ -7,7 +7,13 @@
         mc:Ignorable="d"
         Title="AdminWindow" Height="585.354" Width="834">
     <Grid>
-        <TabControl x:Name="ChefMenu" Margin="10,20,0,10" HorizontalAlignment="Left" Width="806">
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TabControl FontFamily="Corbel" x:Name="ChefMenu" Margin="4,27,0,10" HorizontalAlignment="Left" Width="812">
             <TabItem x:Name="recipesTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -17,9 +23,9 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid Margin="0,57,0,0">
-                        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="0,-39,0,0" TextWrapping="Wrap" Text="Оберіть тип страв" VerticalAlignment="Top" Width="99" Height="23"/>
-                        <ComboBox x:Name="dishTypeComboBox" HorizontalAlignment="Left" Margin="118,-41,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="type" SelectedValuePath="id" SelectedValue="{Binding id, Mode=OneTime}" SelectionChanged="dishTypeComboBox_SelectionChanged"/>
-                        <Button x:Name="addRecipeBtn" Content="Створити рецепт" Click="AddRecipeBtn_OnClick" Width="152" Margin="644,-44,0,439"/>
+                        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="0,-41,0,0" TextWrapping="Wrap" Text="Оберіть тип страв" VerticalAlignment="Top" Width="99" Height="23"/>
+                        <ComboBox x:Name="dishTypeComboBox" HorizontalAlignment="Left" Margin="104,-47,0,0" VerticalAlignment="Top" Width="160" DisplayMemberPath="type" SelectedValuePath="id" SelectedValue="{Binding id, Mode=OneTime}" SelectionChanged="dishTypeComboBox_SelectionChanged" Height="25"/>
+                        <Button x:Name="addRecipeBtn" Content="Створити рецепт" Click="AddRecipeBtn_OnClick" Margin="633,-51,9,440"/>
                         <DataGrid x:Name="MenuGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Страва" Binding="{Binding name}"/>
@@ -61,7 +67,7 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid Margin="0,57,0,0">
-                        <Button x:Name="AddIngrBtn" Margin="0,-49,561,442" Content="Додати інгредієнт" Click="AddIngrBtn_OnClick"/>
+                        <Button x:Name="AddIngrBtn" Margin="0,-49,642,438" Content="Додати інгредієнт" Click="AddIngrBtn_OnClick"/>
                         <DataGrid x:Name="IngredientsGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Страва" Binding="{Binding name}"/>
@@ -98,8 +104,8 @@
                             <ColumnDefinition Width="345*"/>
                             <ColumnDefinition Width="103*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="AddUserBtn" ToolTip="Натисніть, щоб додати нового користувача" Margin="0,-49,113,442" Content="Додати користувача" Click="AddUserBtn_OnClick"/>
-                        <DataGrid x:Name="UsersGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,0,10,26" HorizontalAlignment="Right" Width="786" Grid.ColumnSpan="3">
+                        <Button x:Name="AddUserBtn" ToolTip="Натисніть, щоб додати нового користувача" Margin="0,-49,191,438" Content="Додати користувача" Click="AddUserBtn_OnClick"/>
+                        <DataGrid x:Name="UsersGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,0,10,26" HorizontalAlignment="Right" Width="792" Grid.ColumnSpan="3">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Login" Binding="{Binding login}">
                                     <DataGridTextColumn.CellStyle>
@@ -132,6 +138,111 @@
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem x:Name="types_dishes">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="DeepPink" />
+                        <TextBlock Margin="3"><Run Text="Тип страви"/></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Margin="0,57,0,0">
+                    <Button x:Name="AddTypeDish" Margin="0,-49,642,439" Content="Додати тип страви" Click="AddTypeDish_Click"/>
+                    <DataGrid x:Name="typesDishesGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Тип страви" Binding="{Binding type}"/>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="Дії"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Width="200" Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateTypeDishBtn" Content="Зберегти" Click="updateTypeDishBtn_Click"/>
+                                            <Button Margin="50,0,0,0" ToolTip="Натисніть, щоб видалити статус" x:Name="deleteTypeBtn" Content="Видалити" Click="deleteTypeBtn_Click"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="statuses">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="Aqua" />
+                        <TextBlock Margin="3"><Run Text="Статус"/></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Margin="0,57,0,0">
+                    <Button x:Name="AddStatus" Margin="0,-49,642,438" Content="Додати статус" Click="AddStatus_Click"/>
+                    <DataGrid x:Name="statusesGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Статус" Binding="{Binding name}"/>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="Дії"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Width="200" Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateStatusBtn" Content="Зберегти" Click="updateStatusBtn_Click"/>
+                                            <Button Margin="50,0,0,0" ToolTip="Натисніть, щоб видалити статус" x:Name="deleteStatusBtn" Content="Видалити" Click="deleteStatusBtn_Click"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="WaitersTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="10" Width="10" Fill="LightGoldenrodYellow" />
+                        <TextBlock Margin="3">Офіціанти</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid Margin="0,57,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="99*"/>
+                            <ColumnDefinition Width="101*"/>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid x:Name="waitersGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,0,10,26" HorizontalAlignment="Right" Width="792" Grid.ColumnSpan="2">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Ім'я" Binding="{Binding name}">
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style>
+                                            <Setter Property="ToolTipService.ToolTip" Value="Для редагування натисність двічі"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="Дії"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Width="200" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateWaiterBtn" Content="Зберегти" Click="updateWaiterBtn_Click"/>
+                                                <Button Margin="50,0,0,0" ToolTip="Натисніть, щоб видалити користувача" x:Name="deleteWaiterBtn" Content="Видалити" Click="deleteWaiterBtn_Click"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="AddWaiterBtn" ToolTip="Натисніть, щоб додати нового офіціанта" Margin="0,-49,237,438" Content="Додати офіціанта" Click="AddWaiterBtn_Click"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>

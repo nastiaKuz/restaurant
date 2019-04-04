@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test"
         mc:Ignorable="d"
-        Title="LoginScreen" Height="300" Width="300" Background="#1dc0ff">
+        Title="LoginScreen" Height="300" Width="300" Background="#1dc0ff" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel>
             <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"></Label>
@@ -14,7 +14,7 @@
             <TextBox Name="txtUsername" Background="#545d6a" Foreground="White" FontSize="18"/>
             <Label Content="Password" Foreground="White"/>
             <PasswordBox Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Button Name="btnSubmit" Content="Submit" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18" Click="btnSubmit_Click"/>
+            <Button x:Name="btnSubmit" Content="Submit" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18" Click="btnSubmit_Click"/>
         </StackPanel>
     </Grid>
 </Window>

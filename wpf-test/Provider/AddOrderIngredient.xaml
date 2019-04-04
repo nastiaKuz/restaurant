@@ -1,0 +1,29 @@
+﻿<Window x:Class="Restaurant.Provider.AddOrderIngredient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant.Provider"
+        mc:Ignorable="d"
+        Title="Добавити нове замовлення інгредієнтів" Height="237" Width="736.218">
+    <Grid Margin="0,0,0,0">
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+            <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
+            <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
+            <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
+        </Menu>
+        <TextBlock FontFamily="Corbel" x:Name="textBlock" HorizontalAlignment="Left" Margin="280,42,0,0" TextWrapping="Wrap" Text="Замовлення інгредієнту" VerticalAlignment="Top" FontSize="20" Height="27" Width="218"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="recipeNameToAdd" HorizontalAlignment="Left" Margin="239,89,0,0" TextWrapping="Wrap" Text="Інгредієнт" VerticalAlignment="Top" Height="29" Width="80" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="textBlock2" HorizontalAlignment="Left" Margin="55,89,0,0" TextWrapping="Wrap" Text="Постачальник" VerticalAlignment="Top" Width="98" Height="23"/>
+        <TextBox FontFamily="Corbel" FontSize="14" x:Name="countTextBox" HorizontalAlignment="Left" Height="22" Margin="380,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="textBlock3" HorizontalAlignment="Left" Margin="380,89,0,0" TextWrapping="Wrap" Text="Кількість" VerticalAlignment="Top" Height="23" Width="58" RenderTransformOrigin="0.178,0.567"/>
+        <ComboBox FontFamily="Corbel" FontSize="14" x:Name="providerComboBox" HorizontalAlignment="Left" Margin="36,107,0,0" VerticalAlignment="Top" Width="127" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" Height="22" SelectionChanged="ProviderComboBox_SelectionChanged"/>
+        <Button FontFamily="Corbel" FontSize="14" x:Name="addOrderBtn" Content="Додати" HorizontalAlignment="Left" Margin="280,157,0,0" VerticalAlignment="Top" Width="163" Height="29" Click="AddOrderBtn_Click"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="500,89,0,0" TextWrapping="Wrap" Text="Одиниця вимірювання" VerticalAlignment="Top" Width="58" Height="23"/>
+        <ComboBox FontFamily="Corbel" FontSize="14" x:Name="unitComboBox" HorizontalAlignment="Left" Margin="494,107,0,0" VerticalAlignment="Top" Width="69" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" Height="22" SelectionChanged="UnitComboBox_SelectionChanged"/>
+        <ComboBox FontFamily="Corbel" FontSize="14" x:Name="ingredientComboBox" HorizontalAlignment="Left" Margin="206,107,0,0" VerticalAlignment="Top" Width="136" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" Height="22" SelectionChanged="IngredientComboBox_SelectionChanged"/>
+        <TextBlock FontFamily="Corbel" FontSize="14" x:Name="textBlock3_Copy" HorizontalAlignment="Left" Margin="654,89,0,0" TextWrapping="Wrap" Text="Ціна" VerticalAlignment="Top" Height="23" Width="52"/>
+        <TextBox FontFamily="Corbel" FontSize="14" x:Name="priceTextBox" HorizontalAlignment="Left" Height="22" Margin="636,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+    </Grid>
+</Window>

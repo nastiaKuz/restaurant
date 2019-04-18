@@ -121,12 +121,16 @@ namespace Restaurant.Waiter
         private void PersonsComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int person = Convert.ToInt32(personComboBox.SelectedItem);
+            tabl_id = 0;
+            numberComboBox.SelectedItem = -1;
+            numberComboBox.SelectedIndex = -1;
             numberComboBox.ItemsSource = _db.platens.Where(x => x.people_amount >= person).Select(x => x.id).ToList();
         }
         private void NumberComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int choose_number = Convert.ToInt32(numberComboBox.SelectedItem);
-            tabl_id = _db.platens.Where(x => x.number == choose_number).Select(x => x.id).Single();
+            if (choose_number != 0)
+              tabl_id = _db.platens.Where(x => x.number == choose_number).Select(x => x.id).Single();
         }
         //tables add
         private void AddTable_Click(object sender, RoutedEventArgs e)

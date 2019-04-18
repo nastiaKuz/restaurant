@@ -171,6 +171,7 @@ namespace wpf_test.accountant
             {
                 totalDayIncome += check.price;
             }
+            waiterId = 0;
         }
 
         private void waiterComboBoxComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -193,7 +194,7 @@ namespace wpf_test.accountant
                 var deleteContent = _db.content_order_ingredients.First(c => c.id == content_id);
                 _db.content_order_ingredients.Remove(deleteContent);
                 _db.SaveChanges();
-                providersOrderGrid.ItemsSource = GetProvidersOrderByProvider(providerId).ToList();
+                providersOrderGrid.ItemsSource = GetProvidersOrder(DateTime.Now).ToList();
             }
             else
             {
@@ -228,7 +229,14 @@ namespace wpf_test.accountant
                 var deleteCheck = _db.checks.First(c => c.id == check_id);
                 _db.checks.Remove(deleteCheck);
                 _db.SaveChanges();
-                orderChecksGrid.ItemsSource = GetChecksByDate(DateTime.Now).ToList();
+                if (waiterId != 0)
+                {
+                    orderChecksGrid.ItemsSource = GetChecksByWaiter(waiterId).ToList();
+                } else
+                {
+                    orderChecksGrid.ItemsSource = GetChecksByDate(DateTime.Now).ToList();
+                }
+                
             }
             else
             {
@@ -266,6 +274,7 @@ namespace wpf_test.accountant
         private void showOutcome_Click(object sender, RoutedEventArgs e)
         {
             outcomeTextBox.Text = totalDayOutcome.ToString() + " грн";
+            totalDayOutcome = 0;
         }
         private void Help_Item(object sender, RoutedEventArgs e)
         {

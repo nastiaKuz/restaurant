@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.chef"
         mc:Ignorable="d"
-        Title="ChefWindow" Height="629.65" Width="751" FontFamily="Corbel" FontSize="14">
+        Title="ChefWindow" Height="629.65" Width="751" FontFamily="Corbel" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid>
         <Menu VerticalAlignment="Top" Margin="0,1,0,0">
             <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.admin"
         mc:Ignorable="d"
-        Title="EditUser" Height="300" Width="300" FontFamily="Corbel" FontSize="14">
+        Title="EditUser" Height="300" Width="300" FontFamily="Corbel" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="122,25,0,0" TextWrapping="Wrap" Text="Користувач" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="39,60,0,0" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top"/>

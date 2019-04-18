@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant"
         mc:Ignorable="d"
-        Title="Про програму" Height="309" Width="368">
+        Title="Про програму" Height="309" Width="368" WindowStartupLocation="CenterScreen">
     <Grid>
         <RichTextBox BorderBrush="Black" BorderThickness="0" FontFamily="Corbel" FontSize="16" Name ="textbox" HorizontalAlignment="Left" Height="202" VerticalAlignment="Top" Width="340" Margin="10,27,0,0">
             <FlowDocument>

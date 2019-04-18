@@ -50,18 +50,21 @@ namespace wpf_test.chef
 
         private void addDishBtn_Click(object sender, RoutedEventArgs e)
         {
-            menu newItem = new menu()
+            if (unit_id!=0 && dishType_id!=0 && dishNameTextBox.Text!="")
             {
-                unit_of_measurement_id = unit_id,
-                type_dish_id = dishType_id,
-                dish_name = dishNameTextBox.Text,
-                size = Convert.ToInt32(sizeDishTextBox.Text)
-            };
-            _db.menu.Add(newItem);
-            _db.SaveChanges();
-            this.Hide();
-            EditRecipe editWindow = new EditRecipe(dishNameTextBox.Text);
-            editWindow.ShowDialog();
+                menu newItem = new menu()
+                {
+                    unit_of_measurement_id = unit_id,
+                    type_dish_id = dishType_id,
+                    dish_name = dishNameTextBox.Text,
+                    size = Convert.ToInt32(sizeDishTextBox.Text)
+                };
+                _db.menu.Add(newItem);
+                _db.SaveChanges();
+                this.Hide();
+                EditRecipe editWindow = new EditRecipe(dishNameTextBox.Text);
+                editWindow.ShowDialog();
+            }
         }
     }
 }

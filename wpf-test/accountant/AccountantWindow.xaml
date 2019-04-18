@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.accountant"
         mc:Ignorable="d"
-        Title="AccountantWindow" Height="586.034" Width="1155.104" FontFamily="Corbel" FontSize="14">
+        Title="AccountantWindow" Height="586.034" Width="1155.104" FontFamily="Corbel" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid HorizontalAlignment="Left" Width="1066">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="506*"/>
@@ -106,16 +106,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <Button ToolTip="Натисніть, щоб вивести витрати за день" x:Name="showOutcome" Content="Вивести витрати" Click="showOutcome_Click" Margin="0,323,0,6" HorizontalAlignment="Left" Width="273"/>
-                        <TextBox x:Name="outcomeTextBox" Margin="311,326,626,7" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
-                            <TextBox.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleY="-1"/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </TextBox.RenderTransform>
-                        </TextBox>
+                        <TextBlock x:Name="outcomeTextBox" HorizontalAlignment="Left" Margin="317,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="49" Width="190" Grid.ColumnSpan="2"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>

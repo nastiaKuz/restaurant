@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.chef"
         mc:Ignorable="d"
-        Title="Додати нову страву" Height="237" Width="611" FontFamily="Corbel" FontSize="14">
+        Title="Додати нову страву" Height="237" Width="611" FontFamily="Corbel" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,2,17">
         <Grid.RowDefinitions>
             <RowDefinition Height="147*"/>

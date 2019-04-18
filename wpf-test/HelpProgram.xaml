@@ -5,15 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant"
         mc:Ignorable="d"
-        Title="Довідка" Height="314.389" Width="567.401">
+        Title="Довідка" Height="457.464" Width="706.001" WindowStartupLocation="CenterScreen">
     <Grid>
-        <RichTextBox BorderBrush="Black" BorderThickness="0" FontFamily="Corbel" FontSize="16" Name ="textbox" HorizontalAlignment="Left" Height="202" VerticalAlignment="Top" Width="539" Margin="10,27,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="389*"/>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="127*"/>
+        </Grid.ColumnDefinitions>
+        <RichTextBox BorderBrush="Black" BorderThickness="0" FontFamily="Corbel" FontSize="16" Name ="textbox" HorizontalAlignment="Left" Height="328" VerticalAlignment="Top" Width="674" Margin="10,27,0,0" Grid.ColumnSpan="3">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="RichTextBox"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button FontFamily="Corbel" FontSize="14" Content="Ok" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Click="Button_Click" Margin="0,245,0,0"/>
+        <Button FontFamily="Corbel" FontSize="14" Content="Ok" HorizontalAlignment="Center" VerticalAlignment="Top" Width="143" Click="Button_Click" Margin="291,370,52,0" Height="30"/>
     </Grid>
 </Window>

@@ -106,7 +106,7 @@ namespace wpf_test.chef
 
         private void deleteIngrBtn_Click(object sender, RoutedEventArgs e)
         {
-            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення рецепту?");
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення інгредієнту?");
             if (confWindow.ShowDialog() == true)
             {
                 int recipe_id = (IngredientsGrid.SelectedItem as RecipeContent).id;

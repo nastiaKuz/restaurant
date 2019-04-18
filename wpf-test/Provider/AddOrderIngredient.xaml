@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant.Provider"
         mc:Ignorable="d"
-        Title="Добавити нове замовлення інгредієнтів" Height="237" Width="736.218">
+        Title="Добавити нове замовлення інгредієнтів" Height="237" Width="736.218" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,0">
         <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
             <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>

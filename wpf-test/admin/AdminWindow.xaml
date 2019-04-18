@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.admin"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="585.354" Width="859" FontFamily="Corbel" FontSize="14">
+        Title="AdminWindow" Height="585.354" Width="859" FontFamily="Corbel" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid>
         <Menu Height="30" VerticalAlignment="Top">
             <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
@@ -105,8 +105,8 @@
                             <ColumnDefinition Width="345*"/>
                             <ColumnDefinition Width="103*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="AddUserBtn" ToolTip="Натисніть, щоб додати нового користувача" Margin="0,-49,191,438" Content="Додати користувача" Click="AddUserBtn_OnClick"/>
-                        <DataGrid x:Name="UsersGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,0,10,26" HorizontalAlignment="Right" Width="792" Grid.ColumnSpan="3">
+                        <Button x:Name="AddUserBtn" ToolTip="Натисніть, щоб додати нового користувача" Margin="0,-49,177,438" Content="Додати користувача" Click="AddUserBtn_OnClick"/>
+                        <DataGrid x:Name="UsersGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,0,10,26" HorizontalAlignment="Right" Width="817" Grid.ColumnSpan="3">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Login" Binding="{Binding login}">
                                     <DataGridTextColumn.CellStyle>
@@ -150,7 +150,7 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid Margin="0,57,0,0">
-                    <Button x:Name="AddTypeDish" Margin="0,-49,642,439" Content="Додати тип страви" Click="AddTypeDish_Click"/>
+                    <Button x:Name="AddTypeDish" Margin="0,-49,642,438" Content="Додати тип страви" Click="AddTypeDish_Click"/>
                     <DataGrid x:Name="typesDishesGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Тип страви" Binding="{Binding type}"/>
@@ -217,7 +217,7 @@
                             <ColumnDefinition Width="99*"/>
                             <ColumnDefinition Width="101*"/>
                         </Grid.ColumnDefinitions>
-                        <DataGrid x:Name="waitersGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,0,10,26" HorizontalAlignment="Right" Width="792" Grid.ColumnSpan="2">
+                        <DataGrid x:Name="waitersGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,0,10,26" HorizontalAlignment="Right" Width="817" Grid.ColumnSpan="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Ім'я" Binding="{Binding name}">
                                     <DataGridTextColumn.CellStyle>
@@ -243,7 +243,7 @@
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <Button x:Name="AddWaiterBtn" ToolTip="Натисніть, щоб додати нового офіціанта" Margin="0,-49,237,438" Content="Додати офіціанта" Click="AddWaiterBtn_Click"/>
+                        <Button x:Name="AddWaiterBtn" ToolTip="Натисніть, щоб додати нового офіціанта" Margin="0,-49,224,438" Content="Додати офіціанта" Click="AddWaiterBtn_Click"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>

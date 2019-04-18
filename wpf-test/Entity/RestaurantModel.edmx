@@ -31,7 +31,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="receive_time" Type="datetime" Nullable="false" />
-          <Property Name="execute_time" Type="datetime" />
+          <Property Name="execute_time" Type="datetime" Nullable="false" />
           <Property Name="check_id" Type="int" />
           <Property Name="status_id" Type="int" />
         </EntityType>
@@ -153,7 +153,9 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK__content_o__unit___440B1D61">
-          <End Role="units_of_measurement" Type="Self.units_of_measurement" Multiplicity="0..1" />
+          <End Role="units_of_measurement" Type="Self.units_of_measurement" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="content_order_ingredients" Type="Self.content_order_ingredients" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="units_of_measurement">
@@ -164,7 +166,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__cooking__check_i__5BE2A6F2">
+        <Association Name="FK__cooking__check_i__48CFD27E">
           <End Role="checks" Type="Self.checks" Multiplicity="0..1" />
           <End Role="cooking" Type="Self.cooking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -176,7 +178,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__cooking__status___5CD6CB2B">
+        <Association Name="FK__cooking__status___49C3F6B7">
           <End Role="statuses" Type="Self.statuses" Multiplicity="0..1" />
           <End Role="cooking" Type="Self.cooking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -189,7 +191,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__menu__type_dish___1B0907CE">
-          <End Role="type_dish" Type="Self.type_dish" Multiplicity="0..1" />
+          <End Role="type_dish" Type="Self.type_dish" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="menu" Type="Self.menu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="type_dish">
@@ -200,8 +204,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__order_ing__provi__06CD04F7">
-          <End Role="providers" Type="Self.providers" Multiplicity="0..1" />
+        <Association Name="FK__order_ing__provi__239E4DCF">
+          <End Role="providers" Type="Self.providers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="order_ingredients" Type="Self.order_ingredients" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="providers">
@@ -212,8 +218,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__order_ing__statu__07C12930">
-          <End Role="statuses" Type="Self.statuses" Multiplicity="0..1" />
+        <Association Name="FK__order_ing__statu__24927208">
+          <End Role="statuses" Type="Self.statuses" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="order_ingredients" Type="Self.order_ingredients" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="statuses">
@@ -224,7 +232,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__status_i__74AE54BC">
+        <Association Name="FK__orders__status_i__108B795B">
           <End Role="statuses" Type="Self.statuses" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -238,19 +246,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__table_id__01142BA1">
-          <End Role="platens" Type="Self.platens" Multiplicity="0..1" />
-          <End Role="orders" Type="Self.orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="platens">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orders">
-              <PropertyRef Name="table_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__orders__table_id__75A278F5">
+        <Association Name="FK__orders__table_id__117F9D94">
           <End Role="platens" Type="Self.platens" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -264,19 +260,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__waiter_i__02084FDA">
-          <End Role="waiters" Type="Self.waiters" Multiplicity="0..1" />
-          <End Role="orders" Type="Self.orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="waiters">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orders">
-              <PropertyRef Name="waiter_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__orders__waiter_i__76969D2E">
+        <Association Name="FK__orders__waiter_i__1273C1CD">
           <End Role="waiters" Type="Self.waiters" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -290,7 +274,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recipes__unit_of__68487DD7">
+        <Association Name="FK__recipes__unit_of__34C8D9D1">
           <End Role="units_of_measurement" Type="Self.units_of_measurement" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -305,7 +289,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__storage_i__ingre__3D5E1FD2">
-          <End Role="ingredients" Type="Self.ingredients" Multiplicity="0..1" />
+          <End Role="ingredients" Type="Self.ingredients" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="storage_ingredient" Type="Self.storage_ingredient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ingredients">
@@ -317,7 +303,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__storage_i__unit___3C69FB99">
-          <End Role="units_of_measurement" Type="Self.units_of_measurement" Multiplicity="0..1" />
+          <End Role="units_of_measurement" Type="Self.units_of_measurement" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="storage_ingredient" Type="Self.storage_ingredient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="units_of_measurement">
@@ -329,7 +317,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_contents">
-          <End Role="content_order_ingredients" Type="Self.content_order_ingredients" Multiplicity="1" />
+          <End Role="content_order_ingredients" Type="Self.content_order_ingredients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="shipment" Type="Self.shipment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="content_order_ingredients">
@@ -355,7 +345,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ingredients">
-          <End Role="ingredients" Type="Self.ingredients" Multiplicity="1" />
+          <End Role="ingredients" Type="Self.ingredients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="content_order_ingredients" Type="Self.content_order_ingredients" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ingredients">
@@ -395,7 +387,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_order_ingredients">
-          <End Role="order_ingredients" Type="Self.order_ingredients" Multiplicity="1" />
+          <End Role="order_ingredients" Type="Self.order_ingredients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="content_order_ingredients" Type="Self.content_order_ingredients" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="order_ingredients">
@@ -491,11 +485,11 @@
             <End Role="units_of_measurement" EntitySet="units_of_measurement" />
             <End Role="content_order_ingredients" EntitySet="content_order_ingredients" />
           </AssociationSet>
-          <AssociationSet Name="FK__cooking__check_i__5BE2A6F2" Association="Self.FK__cooking__check_i__5BE2A6F2">
+          <AssociationSet Name="FK__cooking__check_i__48CFD27E" Association="Self.FK__cooking__check_i__48CFD27E">
             <End Role="checks" EntitySet="checks" />
             <End Role="cooking" EntitySet="cooking" />
           </AssociationSet>
-          <AssociationSet Name="FK__cooking__status___5CD6CB2B" Association="Self.FK__cooking__status___5CD6CB2B">
+          <AssociationSet Name="FK__cooking__status___49C3F6B7" Association="Self.FK__cooking__status___49C3F6B7">
             <End Role="statuses" EntitySet="statuses" />
             <End Role="cooking" EntitySet="cooking" />
           </AssociationSet>
@@ -503,35 +497,27 @@
             <End Role="type_dish" EntitySet="type_dish" />
             <End Role="menu" EntitySet="menu" />
           </AssociationSet>
-          <AssociationSet Name="FK__order_ing__provi__06CD04F7" Association="Self.FK__order_ing__provi__06CD04F7">
+          <AssociationSet Name="FK__order_ing__provi__239E4DCF" Association="Self.FK__order_ing__provi__239E4DCF">
             <End Role="providers" EntitySet="providers" />
             <End Role="order_ingredients" EntitySet="order_ingredients" />
           </AssociationSet>
-          <AssociationSet Name="FK__order_ing__statu__07C12930" Association="Self.FK__order_ing__statu__07C12930">
+          <AssociationSet Name="FK__order_ing__statu__24927208" Association="Self.FK__order_ing__statu__24927208">
             <End Role="statuses" EntitySet="statuses" />
             <End Role="order_ingredients" EntitySet="order_ingredients" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__status_i__74AE54BC" Association="Self.FK__orders__status_i__74AE54BC">
+          <AssociationSet Name="FK__orders__status_i__108B795B" Association="Self.FK__orders__status_i__108B795B">
             <End Role="statuses" EntitySet="statuses" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__table_id__01142BA1" Association="Self.FK__orders__table_id__01142BA1">
+          <AssociationSet Name="FK__orders__table_id__117F9D94" Association="Self.FK__orders__table_id__117F9D94">
             <End Role="platens" EntitySet="platens" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__table_id__75A278F5" Association="Self.FK__orders__table_id__75A278F5">
-            <End Role="platens" EntitySet="platens" />
-            <End Role="orders" EntitySet="orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__orders__waiter_i__02084FDA" Association="Self.FK__orders__waiter_i__02084FDA">
+          <AssociationSet Name="FK__orders__waiter_i__1273C1CD" Association="Self.FK__orders__waiter_i__1273C1CD">
             <End Role="waiters" EntitySet="waiters" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__waiter_i__76969D2E" Association="Self.FK__orders__waiter_i__76969D2E">
-            <End Role="waiters" EntitySet="waiters" />
-            <End Role="orders" EntitySet="orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__recipes__unit_of__68487DD7" Association="Self.FK__recipes__unit_of__68487DD7">
+          <AssociationSet Name="FK__recipes__unit_of__34C8D9D1" Association="Self.FK__recipes__unit_of__34C8D9D1">
             <End Role="units_of_measurement" EntitySet="units_of_measurement" />
             <End Role="recipes" EntitySet="recipes" />
           </AssociationSet>
@@ -613,7 +599,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="receive_time" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="execute_time" Type="DateTime" Precision="3" />
+          <Property Name="execute_time" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="check_id" Type="Int32" />
           <Property Name="status_id" Type="Int32" />
           <NavigationProperty Name="checks" Relationship="Self.FK__cooking__check_i__48CFD27E" FromRole="cooking" ToRole="checks" />
@@ -1125,22 +1111,22 @@
           <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getPlatenInfo" EntitySet="platens" ReturnType="Collection(ProjectRestaurantModel.platens)">
-            <Parameter Name="platenId" Mode="In" Type="Int32" />
+          <Parameter Name="platenId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getProviderInfo" EntitySet="providers" ReturnType="Collection(ProjectRestaurantModel.providers)">
-            <Parameter Name="providerId" Mode="In" Type="Int32" />
+          <Parameter Name="providerId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getStatusInfo" EntitySet="statuses" ReturnType="Collection(ProjectRestaurantModel.statuses)">
-            <Parameter Name="statusId" Mode="In" Type="Int32" />
+          <Parameter Name="statusId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getStorageItemInfo" EntitySet="storage_ingredient" ReturnType="Collection(ProjectRestaurantModel.storage_ingredient)">
-            <Parameter Name="storageItemId" Mode="In" Type="Int32" />
+          <Parameter Name="storageItemId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getTypeDishInfo" EntitySet="type_dish" ReturnType="Collection(ProjectRestaurantModel.type_dish)">
-            <Parameter Name="typedishId" Mode="In" Type="Int32" />
+          <Parameter Name="typedishId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getWaiterInfo" EntitySet="waiters" ReturnType="Collection(ProjectRestaurantModel.waiters)">
-            <Parameter Name="waiterId" Mode="In" Type="Int32" />
+          <Parameter Name="waiterId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getIngredients_Result">

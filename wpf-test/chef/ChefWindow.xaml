@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.chef"
         mc:Ignorable="d"
-        Title="ChefWindow" Height="629.65" Width="751">
+        Title="ChefWindow" Height="629.65" Width="751" FontFamily="Corbel" FontSize="14">
     <Grid>
-        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top" Margin="0,1,0,0">
+        <Menu VerticalAlignment="Top" Margin="0,1,0,0">
             <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
             <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
             <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
             <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
         </Menu>
-        <TabControl FontFamily="Corbel" x:Name="ChefMenu" Margin="3,29,0,2" HorizontalAlignment="Left" Width="733">
+        <TabControl x:Name="ChefMenu" Margin="3,29,0,2" HorizontalAlignment="Left" Width="733">
             <TabItem x:Name="currentChecksTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -118,7 +118,7 @@
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                                 <Button ToolTip="Натисніть, щоб переглянути рецепт" x:Name="showBtn" Content="Переглянути" Click="showBtn_Click"/>
-                                                <Button ToolTip="Натисніть, щоб видалити рецепт" x:Name="deleteBtn" Content="Delete" Click="deleteBtn_Click"/>
+                                                <Button ToolTip="Натисніть, щоб видалити рецепт" x:Name="deleteBtn" Content="Видалити" Click="deleteBtn_Click"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>

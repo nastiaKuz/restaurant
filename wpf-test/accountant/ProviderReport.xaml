@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.accountant"
         mc:Ignorable="d"
-        Title="ProviderReport" Height="345" Width="418.321">
+        Title="ProviderReport" Height="345" Width="418.321" FontFamily="Corbel" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="182,10,0,0" TextWrapping="Wrap" Text="Звіт" VerticalAlignment="Top" FontSize="20"/>
         <TextBlock x:Name="providerTextBlock" HorizontalAlignment="Left" Margin="45,65,0,0" TextWrapping="Wrap" Text="Провайдер" VerticalAlignment="Top"/>
@@ -17,6 +17,6 @@
         <TextBlock x:Name="priceTextBlock" HorizontalAlignment="Left" Margin="45,218,0,0" TextWrapping="Wrap" Text="Ціна, грн" VerticalAlignment="Top"/>
         <TextBox x:Name="priceTextBox" HorizontalAlignment="Left" Height="29" Margin="165,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101"/>
         <Button x:Name="closeReportBtn" Content="Закрити" HorizontalAlignment="Left" Margin="153,267,0,0" VerticalAlignment="Top" Width="113" Height="38" Click="closeReportBtn_Click"/>
-        <TextBlock x:Name="unitsTextBlock" HorizontalAlignment="Left" Margin="288,166,0,0" TextWrapping="Wrap" Text="Кількість" VerticalAlignment="Top" Height="24" Width="49"/>
+        <TextBlock x:Name="unitsTextBlock" HorizontalAlignment="Left" Margin="288,166,0,0" TextWrapping="Wrap" Text="Кількість" VerticalAlignment="Top" Height="24" Width="112"/>
     </Grid>
 </Window>

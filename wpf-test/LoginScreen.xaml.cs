@@ -71,7 +71,7 @@ namespace wpf_test
                 }
                 else
                 {
-                    MessageBox.Show("The user doesn't exist");
+                    MessageBox.Show("Користувача з такими даними не існує");
                 }
             }
             catch (SqlException ex)

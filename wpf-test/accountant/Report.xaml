@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.accountant"
         mc:Ignorable="d"
-        Title="Звіт" Height="345" Width="418.321">
+        Title="Звіт" Height="345" Width="418.321" FontFamily="Corbel" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="182,10,0,0" TextWrapping="Wrap" Text="Звіт" VerticalAlignment="Top" FontSize="20"/>
         <TextBlock x:Name="waiterTextBlock" HorizontalAlignment="Left" Margin="45,65,0,0" TextWrapping="Wrap" Text="Офіціант" VerticalAlignment="Top"/>
@@ -16,6 +16,6 @@
         <TextBox x:Name="dishTextBox" HorizontalAlignment="Left" Height="29" Margin="165,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" RenderTransformOrigin="0.5,0.5"/>
         <TextBlock x:Name="priceTextBlock" HorizontalAlignment="Left" Margin="45,218,0,0" TextWrapping="Wrap" Text="Ціна" VerticalAlignment="Top"/>
         <TextBox x:Name="priceTextBox" HorizontalAlignment="Left" Height="29" Margin="165,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78"/>
-        <Button x:Name="closeReportBtn" Content="Зберегти" HorizontalAlignment="Left" Margin="153,267,0,0" VerticalAlignment="Top" Width="113" Height="38" Click="closeReportBtn_Click"/>
+        <Button x:Name="closeReportBtn" Content="Закрити" HorizontalAlignment="Left" Margin="153,267,0,0" VerticalAlignment="Top" Width="113" Height="38" Click="closeReportBtn_Click"/>
     </Grid>
 </Window>

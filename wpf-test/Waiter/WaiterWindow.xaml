@@ -23,11 +23,14 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid Margin="0,57,0,0">
-                        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Офіціант" VerticalAlignment="Top" Margin="47,-49,0,0"/>
+                        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Офіціант" VerticalAlignment="Top" Margin="44,-47,0,0" Height="21" Width="60"/>
                         <ComboBox x:Name="waiterComboBox" HorizontalAlignment="Left" Margin="8,-28,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="WaiterComboBox_OnSelectionChanged"/>
-                        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="195,-49,0,0" TextWrapping="Wrap" Text="Кількість персон" VerticalAlignment="Top" Width="96" Height="23"/>
+                        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="173,-49,0,0" TextWrapping="Wrap" Text="     Кількість персон" VerticalAlignment="Top" Width="135" Height="23"/>
                         <ComboBox x:Name="personComboBox" HorizontalAlignment="Left" Margin="173,-28,0,0" VerticalAlignment="Top" Width="135" SelectionChanged="PersonsComboBox_OnSelectionChanged"/>
-                        <Button x:Name="MakeOrder" Margin="549,-48,12,427" Content="Зробити замовлення" Click="MakeOrder_Click"/>
+                        <TextBlock x:Name="textBlock3_Copy" HorizontalAlignment="Left" Margin="346,-49,0,0" TextWrapping="Wrap" Text="      Номер столика" VerticalAlignment="Top" Width="135" Height="23"/>
+                        <ComboBox x:Name="numberComboBox" HorizontalAlignment="Left" Margin="346,-28,0,0" VerticalAlignment="Top" Width="135" SelectionChanged="NumberComboBox_OnSelectionChanged"/>
+                        <Button x:Name="MakeOrder" Margin="547,-47,14,426" Content="Забронювати  столик" Click="MakeOrder_Click"/>
+                        <Image Source="../Waiter/restaurant.jpg"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
@@ -46,7 +49,8 @@
                                 <DataGridTextColumn Header="Назва страви" Binding="{Binding name}"/>
                                 <DataGridTextColumn Header="Розмір" Binding="{Binding size}"/>
                                 <DataGridTextColumn Width="140" Header="Одиниці вимірювання" Binding="{Binding unit_measurement}"/>
-                                <DataGridTextColumn Header="Ціна" Binding="{Binding price}">
+                                <DataGridTextColumn Header="Ціна" Binding="{Binding price}"/>
+                                <DataGridTextColumn Header="Кількість" Binding="{Binding count}">
                                     <DataGridTextColumn.CellStyle>
                                         <Style>
                                             <Setter Property="ToolTipService.ToolTip" Value="Для редагування натисність двічі"/>
@@ -90,8 +94,8 @@
                                 <DataGridTextColumn Header="Назва страви" Binding="{Binding dishname}"/>
                                 <DataGridTextColumn Width ="50" Header="Розмір" Binding="{Binding size}"/>
                                 <DataGridTextColumn Width="140" Header="Одиниці вимірювання" Binding="{Binding unit_measurement}"/>
-                                <DataGridTextColumn Width ="50" Header="Ціна" Binding="{Binding price}"/>
                                 <DataGridTextColumn Width ="70" Header="Кількість" Binding="{Binding count}"/>
+                                <DataGridTextColumn Width ="50" Header="Ціна" Binding="{Binding price}"/>
                                 <DataGridTemplateColumn>
                                     <DataGridTemplateColumn.HeaderTemplate>
                                         <DataTemplate>

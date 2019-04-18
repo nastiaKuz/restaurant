@@ -57,8 +57,6 @@ namespace wpf_test.chef
         {
             InitializeComponent();
             RecipesGrid.ItemsSource = GetItems().ToList();
-            rDatagrid = RecipesGrid;
-            cDataGrid = CurrentChecksGrid;
             LoadCurrentChecks();
             AllChecksGrid.ItemsSource = GetChecks(DateTime.Now);
         }
@@ -149,6 +147,7 @@ namespace wpf_test.chef
         {
             AddDish addRecipePage = new AddDish();
             addRecipePage.ShowDialog();
+            RecipesGrid.ItemsSource = GetItems().ToList();
         }
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -194,6 +193,7 @@ namespace wpf_test.chef
                 else
                 {
                     listWindow.Hide();
+                    CurrentChecksGrid.UnselectAll();
                 }
             }
         }
@@ -220,6 +220,7 @@ namespace wpf_test.chef
                 confWindow.Hide();
             }
         }
+
 
         private void updBtn_Click(object sender, RoutedEventArgs e)
         {

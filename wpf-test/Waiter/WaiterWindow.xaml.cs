@@ -61,6 +61,7 @@ namespace Restaurant.Waiter
             public int size { get; set; }
             public string unit_measurement { get; set; }
             public int price { get; set; }
+            public int count { get; set; }
         }
         List<MenuTable> GetMenu()
         {
@@ -74,14 +75,15 @@ namespace Restaurant.Waiter
                             name = menu_item.dish_name,
                             type_dish = type_item.type,
                             unit_measurement = unit_item.name,
-                            price = menu_item.price
+                            price = menu_item.price,
+                            count = 1
                         }).Distinct();
             return menu.OrderBy(x => x.type_dish).ToList();
         }
         private void ChooseDish_Click(object sender, RoutedEventArgs e)
         {
             id_menu = (orderGrid.SelectedItem as MenuTable).id;
-            int myCount = 1;
+            int myCount = (orderGrid.SelectedItem as MenuTable).count;
             myOrder_id = (from m in _db.orders select m.id).ToList().Last();
             checks item = new checks()
             {
@@ -114,20 +116,17 @@ namespace Restaurant.Waiter
             };
             _db.orders.Add(item);
             _db.SaveChanges();
+            MessageBox.Show("Столик успішно заброньованo.");
         }
         private void PersonsComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string table;
             int person = Convert.ToInt32(personComboBox.SelectedItem);
-            if (person == 1)
-                table = (_db.platens.
-                    Where(x => x.people_amount >= 2).
-                    Select(x => x.id).FirstOrDefault()).ToString();
-            else
-                table = (_db.platens.
-                    Where(x => x.people_amount == person || x.people_amount == (person + 1)).
-                    Select(x => x.id).FirstOrDefault()).ToString();
-            tabl_id = Convert.ToInt32(table);
+            numberComboBox.ItemsSource = _db.platens.Where(x => x.people_amount >= person).Select(x => x.id).ToList();
+        }
+        private void NumberComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int choose_number = Convert.ToInt32(numberComboBox.SelectedItem);
+            tabl_id = _db.platens.Where(x => x.number == choose_number).Select(x => x.id).Single();
         }
         //tables add
         private void AddTable_Click(object sender, RoutedEventArgs e)
@@ -174,7 +173,6 @@ namespace Restaurant.Waiter
             public string unit_measurement { get; set; }
             public int price { get; set; }
             public int count { get; set; }
-            public int ToPay { get; set; }
         }
         List<CheckTable> GetCheck()
         {
@@ -193,9 +191,8 @@ namespace Restaurant.Waiter
                              dishname = menu_item.dish_name,
                              size = menu_item.size,
                              unit_measurement = unit_item.name,
-                             price = menu_item.price,
                              count = check_item.count,
-                             ToPay = menu_item.price * check_item.count
+                             price = menu_item.price * check_item.count
                          }).Distinct();
 
             return check.ToList();

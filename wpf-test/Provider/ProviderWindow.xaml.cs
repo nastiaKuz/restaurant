@@ -51,7 +51,7 @@ namespace Restaurant.Provider
                             id = storage_item.id,
                             ingredient_name = ingredient_item.name,
                             count = storage_item.count,
-                            unit_measurement = unit_item.name,
+                            unit_measurement = "г"
                         }).Distinct();
             return item.ToList();
         }
@@ -103,6 +103,9 @@ namespace Restaurant.Provider
             if (confWindow.ShowDialog() == true)
             {
                 int id = (ordIngrGrid.SelectedItem as OrderIngredientTable).id;
+                var deleteContent = _db.content_order_ingredients.Where(m => m.order_ingredients_id == id).Single();
+                _db.content_order_ingredients.Remove(deleteContent);
+                _db.SaveChanges();
                 var deleteOrderIngredient = _db.order_ingredients.Where(m => m.id == id).Single();
                 _db.order_ingredients.Remove(deleteOrderIngredient);
                 _db.SaveChanges();

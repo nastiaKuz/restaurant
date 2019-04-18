@@ -174,6 +174,23 @@ namespace wpf_test.admin
         {
             AddDish addRecipePage = new AddDish();
             addRecipePage.ShowDialog();
+            MenuGrid.ItemsSource = GetItems(1).ToList();
+        }
+        private void deleteRecipeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmReadiness confWindow = new ConfirmReadiness("Ви підтверджуєте видалення рецепту?");
+            if (confWindow.ShowDialog() == true)
+            {
+                int menu_id = (MenuGrid.SelectedItem as MenuTable).menu_id;
+                var deleteDish = _db.menu.First(c => c.id == menu_id);
+                _db.menu.Remove(deleteDish);
+                _db.SaveChanges();
+                MenuGrid.ItemsSource = GetItems(typeId).ToList();
+            }
+            else
+            {
+                confWindow.Hide();
+            }
         }
         private void Close_Program(object sender, RoutedEventArgs e)
         {
@@ -206,6 +223,7 @@ namespace wpf_test.admin
         private void Help_Item(object sender, RoutedEventArgs e)
         {
             string Help = "1. Для перегляду списку типів страв, перейдіть у вкладку \"Тип страви\".\n" +
+                          "1. Для перегляду списку типів страв, перейдіть у вкладку \"Тип страви\".\n" +
                           "2. Для додавання нового типу страви, перейдіть у вкладку \"Тип страви\" та натисніть кнопку \"Додати тип страви\".\n" +
                           "3. Для перегляду списку статусів, перейдіть у вкладку \"Статус\".\n" +
                           "4. Для додавання нового статусу, перейдіть у вкладку \"Статус\" та натисніть кнопку \"Додати статус\".\n" +

@@ -46,7 +46,7 @@ namespace wpf_test.accountant
         }
         ProjectRestaurantEntities _db = new ProjectRestaurantEntities();
         private List<orderCheck> curChecks;
-        private int waiterId, providerId, totalDayIncome=0;
+        private int waiterId, providerId, totalDayIncome = 0, totalDayOutcome = 0;
         public AccountantWindow()
         {
             InitializeComponent();
@@ -61,7 +61,12 @@ namespace wpf_test.accountant
         }
         private void updProvidersOrderGrid(DateTime date)
         {
-            providersOrderGrid.ItemsSource = GetProvidersOrder(date);
+            var curProvChecks = GetProvidersOrder(date);
+            providersOrderGrid.ItemsSource = curProvChecks;
+            foreach (var check in curProvChecks)
+            {
+                totalDayOutcome += check.price;
+            }
         }
         private void updOrderChecksGrid(DateTime date)
         {
@@ -94,8 +99,7 @@ namespace wpf_test.accountant
                 join order_ingr_item in _db.order_ingredients on content_item.order_ingredients_id equals order_ingr_item.id
                 join provider_item in _db.providers on order_ingr_item.provider_id equals provider_item.id
                 join status_item in _db.statuses on order_ingr_item.status_id equals status_item.id
-                          //where order_ingr_item.order_time.ToString().Substring(3, 2) == date.ToString().Substring(3, 2)
-                          select new providersOrder()
+                  select new providersOrder()
                 {
                     content_id = content_item.id,
                     time = order_ingr_item.order_time,
@@ -145,6 +149,7 @@ namespace wpf_test.accountant
                     dish_count = check_item.count,
                     price = menu_item.price,
                     check_id = check_item.id,
+                    table = order_item.table_id
                 }).ToList();
             return result;
         }
@@ -258,17 +263,16 @@ namespace wpf_test.accountant
             }
         }
 
+        private void showOutcome_Click(object sender, RoutedEventArgs e)
+        {
+            outcomeTextBox.Text = totalDayOutcome.ToString() + " грн";
+        }
         private void Help_Item(object sender, RoutedEventArgs e)
         {
-            string Help = "1. Для перегляду списку типів страв, перейдіть у вкладку \"Тип страви\".\n" +
-                          "2. Для додавання нового типу страви, перейдіть у вкладку \"Тип страви\" та натисніть кнопку \"Додати тип страви\".\n" +
-                          "3. Для перегляду списку статусів, перейдіть у вкладку \"Статус\".\n" +
-                          "4. Для додавання нового статусу, перейдіть у вкладку \"Статус\" та натисніть кнопку \"Додати статус\".\n" +
-                          "5. Для перегляду списку офіціантів, перейдіть у вкладку \"Офіціанти\".\n" +
-                          "6. Для додавання нового офіціанта, перейдіть у вкладку \"Офіціанти\" та натисніть кнопку \"Додати офіціанта\".\n" +
-                          "7. Для видалення елементів із таблиці, натисніть кнопку \"Видалити\", яка розташована у рядку відповідного елемента.\n" +
-                          "8. Для редагування елементу, двічі натисніть на поле та після введення нового елементу, натисніть клавішу ENTER та " +
-                          "кнопку \"Зберегти\", яка розташована у рядку відповідного елемента.\n";
+            string Help = "1. Для перегляду чеків, перейдіть на вкладку \"Чеки\".\n" +
+                          "2. Для перегляду замовлень інгредієнтів, перейдіть на вкладку \"Замовлення інгредієнтів\".\n" +
+                          "3. Для перегляду звіту, натисніть кнопку \"Переглянути звіт\" у таблицях.\n" +
+                          "4. Для видалення елементів із таблиці, натисніть кнопку \"Видалити\", яка розташована у рядку відповідного елемента.\n";
             HelpProgram helpWindow = new HelpProgram(Help);
             helpWindow.ShowDialog();
         }

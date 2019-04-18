@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:wpf_test.chef"
       mc:Ignorable="d" d:DesignWidth="300"
-      Title="Підтвердження готовності" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+      Title="Підтвердження готовності" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" FontFamily="Corbel" FontSize="14">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />

@@ -5,15 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.accountant"
         mc:Ignorable="d"
-        Title="AccountantWindow" Height="554.034" Width="1101.104">
+        Title="AccountantWindow" Height="586.034" Width="1155.104" FontFamily="Corbel" FontSize="14">
     <Grid HorizontalAlignment="Left" Width="1066">
-        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="506*"/>
+            <ColumnDefinition Width="27*"/>
+        </Grid.ColumnDefinitions>
+        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="2,0,-73,0">
             <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
             <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
             <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
             <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
         </Menu>
-        <TabControl FontFamily="Corbel" x:Name="ChefMenu" Margin="2,29,-14,11" HorizontalAlignment="Left" Width="1078">
+        <TabControl FontFamily="Corbel" x:Name="ChefMenu" Margin="2,29,-73,10" HorizontalAlignment="Left" Width="1137" Grid.ColumnSpan="2">
             <TabItem x:Name="orderChecksTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -29,8 +33,8 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="0,-86,0,0" TextWrapping="Wrap" Text="Оберіть дату" VerticalAlignment="Top" Width="99" Height="23"/>
                         <DatePicker Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,-88,0,0" SelectedDateChanged="datePicker_SelectedDateChanged" IsTodayHighlighted="True"/>
-                        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="39,-84,0,0" TextWrapping="Wrap" Text="Оберіть офіціанта" VerticalAlignment="Top" Width="99" Height="23" RenderTransformOrigin="2.717,0.739" Grid.Column="1"/>
-                        <ComboBox x:Name="waiterComboBox" HorizontalAlignment="Left" Margin="168,-89,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id, Mode=OneTime}" SelectionChanged="waiterComboBoxComboBox_SelectionChanged" Height="25" Grid.Column="1"/>
+                        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="39,-84,0,0" TextWrapping="Wrap" Text="Оберіть офіціанта" VerticalAlignment="Top" Width="137" Height="23" RenderTransformOrigin="2.717,0.739" Grid.Column="1"/>
+                        <ComboBox x:Name="waiterComboBox" HorizontalAlignment="Left" Margin="181,-88,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id, Mode=OneTime}" SelectionChanged="waiterComboBoxComboBox_SelectionChanged" Height="25" Grid.Column="1"/>
                         <DataGrid x:Name="orderChecksGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,-50,0,62" Grid.ColumnSpan="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Дата" Binding="{Binding time}"/>
@@ -55,8 +59,8 @@
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <Button ToolTip="Натисніть, щоб вивести прибуток за день" x:Name="showIncome" Content="Вивести прибуток за поточний день" Click="showIncome_Click" Margin="0,293,64,10"/>
-                        <TextBox Name="incomeTextBox" Margin="283,293,540,10" Grid.ColumnSpan="2"/>
+                        <Button ToolTip="Натисніть, щоб вивести прибуток за день" x:Name="showIncome" Content="Вивести прибуток за поточний день" Click="showIncome_Click" Margin="1,326,0,5" HorizontalAlignment="Left" Width="273"/>
+                        <TextBox Name="incomeTextBox" Margin="314,326,623,5" Grid.ColumnSpan="2"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
@@ -73,18 +77,16 @@
                             <ColumnDefinition Width="226*"/>
                             <ColumnDefinition Width="529*"/>
                         </Grid.ColumnDefinitions>
-                        <!--<TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="0,-86,0,0" TextWrapping="Wrap" Text="Оберіть дату" VerticalAlignment="Top" Width="99" Height="23"/>
-                        <DatePicker Name="datePicker2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,-88,0,0" SelectedDateChanged="datePicker2_SelectedDateChanged" IsTodayHighlighted="True"/>-->
                         <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="3,-84,0,0" TextWrapping="Wrap" Text="Оберіть провайдера" VerticalAlignment="Top" Width="135" Height="23" RenderTransformOrigin="2.717,0.739"/>
                         <ComboBox x:Name="providerComboBox" HorizontalAlignment="Left" Margin="138,-89,0,0" VerticalAlignment="Top" Width="137" DisplayMemberPath="name" SelectedValuePath="id" SelectedValue="{Binding id, Mode=OneTime}" SelectionChanged="providerComboBoxComboBox_SelectionChanged" Height="25"/>
-                        <DataGrid x:Name="providersOrderGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,-50,0,23" Grid.ColumnSpan="2">
+                        <DataGrid x:Name="providersOrderGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto" Margin="0,-50,0,64" Grid.ColumnSpan="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Дата" Binding="{Binding time}"/>
-                                <DataGridTextColumn Header="Інгредієнт" Binding="{Binding ingredient}"/>
+                                <DataGridTextColumn Header="Інгредієнт" Width="90" Binding="{Binding ingredient}"/>
                                 <DataGridTextColumn Width="70" Header="Кількість" Binding="{Binding ingr_count}"/>
                                 <DataGridTextColumn Header="Одиниці вимірювання" Binding="{Binding units}"/>
                                 <DataGridTextColumn Header="Провайдер" Binding="{Binding provider}"/>
-                                <DataGridTextColumn Width="100" Header="Статус" Binding="{Binding status}"/>
+                                <DataGridTextColumn Width="80" Header="Статус" Binding="{Binding status}"/>
                                 <DataGridTextColumn Width="80" Header="Ціна, грн" Binding="{Binding price}"/>
                                 <DataGridTemplateColumn>
                                     <DataGridTemplateColumn.HeaderTemplate>
@@ -103,12 +105,20 @@
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <!--<Button ToolTip="Натисніть, щоб вивести витрати за місяць" x:Name="showCosts" Content="Вивести витрати за поточний місяць" Click="showCosts_Click" Margin="0,293,71,10"/>
-                        <TextBox Name="costsTextBox" Margin="264,293,548,10" Grid.ColumnSpan="2"/>-->
+                        <Button ToolTip="Натисніть, щоб вивести витрати за день" x:Name="showOutcome" Content="Вивести витрати" Click="showOutcome_Click" Margin="0,323,0,6" HorizontalAlignment="Left" Width="273"/>
+                        <TextBox x:Name="outcomeTextBox" Margin="311,326,626,7" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+                            <TextBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="-1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBox.RenderTransform>
+                        </TextBox>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
         </TabControl>
-        <Menu x:Name="menu" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1078" Margin="10,2,-22,0" Background="{x:Null}"/>
     </Grid>
 </Window>

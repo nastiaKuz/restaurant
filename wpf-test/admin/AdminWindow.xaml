@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_test.admin"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="585.354" Width="834">
+        Title="AdminWindow" Height="585.354" Width="859" FontFamily="Corbel" FontSize="14">
     <Grid>
-        <Menu FontFamily="Corbel" FontSize="14" Height="30" VerticalAlignment="Top">
+        <Menu Height="30" VerticalAlignment="Top">
             <MenuItem Margin="0,5" Header="Змінити користувача" Click="Change_User"></MenuItem>
             <MenuItem Margin="0,5" Header="Допомога" Click="Help_Item"></MenuItem>
             <MenuItem Margin="0,5" Header="Про програму" Click="About_Item"></MenuItem>
             <MenuItem Margin="0,5" Header="Вихід" Click="Close_Program"></MenuItem>
         </Menu>
-        <TabControl FontFamily="Corbel" x:Name="ChefMenu" Margin="4,27,0,10" HorizontalAlignment="Left" Width="812">
+        <TabControl x:Name="ChefMenu" Margin="4,27,0,10" HorizontalAlignment="Left" Width="837">
             <TabItem x:Name="recipesTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -29,10 +29,10 @@
                         <DataGrid x:Name="MenuGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Страва" Binding="{Binding name}"/>
-                                <DataGridTextColumn Header="Тип" Binding="{Binding type}"/>
+                                <DataGridTextColumn Header="Тип" Width="100" Binding="{Binding type}"/>
                                 <DataGridTextColumn Width="70" Header="Розмір" Binding="{Binding size}"/>
                                 <DataGridTextColumn Header="Одиниці вимірювання" Binding="{Binding units}"/>
-                                <DataGridTextColumn Width="100" Header="Ціна" Binding="{Binding price}">
+                                <DataGridTextColumn Width="70" Header="Ціна" Binding="{Binding price}">
                                     <DataGridTextColumn.CellStyle>
                                         <Style>
                                             <Setter Property="ToolTipService.ToolTip" Value="Для редагування натисність двічі"/>
@@ -49,6 +49,7 @@
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                                 <Button ToolTip="Натисніть, щоб зберегти зміни" x:Name="updateBtn" Content="Зберегти зміни" Click="updateBtn_Click"/>
+                                                <Button ToolTip="Натисніть, щоб видалити рецепт" x:Name="deleteRecipeBtn" Content="Видалити" Click="deleteRecipeBtn_Click"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -176,14 +177,14 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Ellipse Height="10" Width="10" Fill="Aqua" />
-                        <TextBlock Margin="3"><Run Text="Статус"/></TextBlock>
+                        <TextBlock Margin="3"><Run Text="Статуси"/></TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <Grid Margin="0,57,0,0">
                     <Button x:Name="AddStatus" Margin="0,-49,642,438" Content="Додати статус" Click="AddStatus_Click"/>
                     <DataGrid x:Name="statusesGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalScrollBarVisibility="Auto">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Статус" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Статуси" Binding="{Binding name}"/>
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.HeaderTemplate>
                                     <DataTemplate>

@@ -101,12 +101,11 @@
                             <DataGridTextColumn Width="100" Header="Постачальник" Binding="{Binding provid_name}"/>
                             <DataGridTextColumn Header="Інгредієнт" Binding="{Binding ingr_name}"/>
                             <DataGridTextColumn Header="Кількість" Binding="{Binding count}"/>
-                            <DataGridTextColumn Width="140" Header="Одиниці вимірювання" Binding="{Binding units}"/>
+                            <DataGridTextColumn Width="150" Header="Одиниці вимірювання" Binding="{Binding units}"/>
                             <DataGridTextColumn Width="60" Header="Ціна" Binding="{Binding price}"/>
                             <DataGridTextColumn Header="Статус" Binding="{Binding status}"/>
-                            <DataGridTextColumn Width="145" Header="Відправлення" Binding="{Binding d1}"/>
-                            <DataGridTextColumn Width="145" Header="Прибуття" Binding="{Binding d2}">
-                                <DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn Width="145" Header="Відправлення" Binding="{Binding d1}">
+                            <DataGridTextColumn.CellStyle>
                                     <Style>
                                         <Setter Property="ToolTipService.ToolTip" Value="Для редагування натисність двічі"/>
                                     </Style>
